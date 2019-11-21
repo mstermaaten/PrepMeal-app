@@ -20,7 +20,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 mongoose
-  .connect("mongodb://localhost:27017/myapp", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/PrepMeal", { useNewUrlParser: true })
   .then(() => {
     console.log("mongo connected");
   })
@@ -60,7 +60,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api/auth", apiRouter);
+app.use("/auth", apiRouter);
 app.use("/", indexRouter);
 app.use("/ingredient", createIngrRouter);
 app.use("/recipe", createRecipeRouter);
