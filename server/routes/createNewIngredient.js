@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const Ingredient = require("../models/Ingredients");
+const Ingredient = require("../models/Ingredient");
 // const Recipe = require("../models/Recipe");
 // const DayPlan = require("../models/DayPlan");
 // const WeekPlan = require("../models/WeekPlan");
@@ -8,7 +8,17 @@ const Ingredient = require("../models/Ingredients");
 router.get("/", async (req, res, next) => {
   try {
     const allIngredients = await Ingredient.find({});
-    res.status(200).json({ allIngredients });
+    res.status(200).json(allIngredients);
+  } catch (err) {
+    res.status(500).json({ message: "oeps something went wrong" + err });
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const oneIngredients = await Ingredient.findById(id);
+    res.status(200).json(oneIngredients);
   } catch (err) {
     res.status(500).json({ message: "oeps something went wrong" + err });
   }
