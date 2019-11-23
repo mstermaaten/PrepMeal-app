@@ -6,19 +6,22 @@ const Recipe = require("../models/Recipe");
 // const WeekPlan = require("../models/WeekPlan");
 
 router.post("/create", async (req, res, next) => {
-  const { ingredients } = req.body;
-  const parsedingredient = JSON.parse(ingredients);
-  res.send(parsedingredient);
-  //   console.log(ingredients);
-  //   try {
-  //     const newRecipe = await Recipe.create({
-  //       name,
-  //       ingredients: [JSON.parse(ingredients)]
-  //     });
-  //     res.status(200).json(newRecipe + "new recipe created");
-  //   } catch (err) {
-  //     res.status(403).json({ message: "mhh the recipe was not created" });
-  //   }
+  const { name, ingredients } = req.body;
+  const { _id: userId } = req.session.user;
+  //   res.json(req.body);
+  //   const parsedIngredients = JSON.parse(ingredients);
+  console.log(ingredients);
+  try {
+    const newRecipe = await Recipe.create({
+      name,
+      createdBy: userId,
+      likes: [],
+      ingredients: { $set: { ingredients } }
+    });
+    res.status(200).json(newRecipe + "new recipe created");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // router.get("/", async (req, res, next) => {

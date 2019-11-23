@@ -28,6 +28,7 @@ router.post("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({ username });
     if (user && user.password === password) {
+      req.session.user = user;
       res.status(200).json({ message: "you are logged in " });
     } else {
       res

@@ -10,8 +10,8 @@ const recipeSchema = new Schema(
     name: { type: String, required: true },
     ingredients: [
       {
-        _id: { type: Schema.Types.ObjectId, ref: "Ingredient" },
-        portion: { type: Number, required: true }
+        ingredientId: { type: Schema.Types.ObjectId, ref: "Ingredient" },
+        portion: { type: Number }
       }
     ],
     createdBy: { type: Schema.Types.ObjectId, required: true },
