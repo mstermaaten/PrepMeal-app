@@ -10,14 +10,19 @@ const recipeSchema = new Schema(
     name: { type: String, required: true },
     ingredients: [
       {
-        ingredientId: { type: Schema.Types.ObjectId, ref: "Ingredient" },
-        portion: { type: Number }
+        ingredientId: {
+          type: Schema.Types.ObjectId,
+          ref: "Ingredient"
+        },
+        portion: { type: Number, default: 1 },
+        _id: false
       }
     ],
     createdBy: { type: Schema.Types.ObjectId, required: true },
     likes: [
       {
-        _id: { type: Schema.Types.ObjectId, ref: "User" }
+        user: { type: Schema.Types.ObjectId, ref: "User" },
+        _id: false
       }
     ]
   },

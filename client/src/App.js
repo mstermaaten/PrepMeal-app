@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Ingredients from "./pages/allLists/ingredient/ingredients";
 import CreateIngredient from "./pages/allLists/ingredient/createIngredient";
 import UpdateIngredient from "./pages/allLists/ingredient/updateIngredient";
+import Recipes from "./pages/allLists/recipe/recipes";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/ingredient" component={Ingredients} />
       <Route path="/ingredient/create" component={CreateIngredient} />
       <Route path="/ingredient/update/:id" component={UpdateIngredient} />
+      <Route exact path="/recipe" component={Recipes} />
     </Switch>
   );
 }
