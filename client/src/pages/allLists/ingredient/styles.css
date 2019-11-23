@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px;
+  margin: 5px;
+}
+
+.list-container {
+  width: 80vw;
+  display: block;
+  margin: auto;
+}
+
+.ingredient-list {
+  border: 2px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredient-list-item {
+  display: flex;
+
+  align-items: center;
+  border: 2px dotted grey;
+  margin: 5px;
+  padding: 0px 5px;
+  width: 100%;
+}
+
+.ingredient-list-item span {
+  font-weight: 600;
+}
+
+.ingredient-list-item .name {
+  width: 30%;
+}
+
+.ingredient-list-item .value {
+  width: 12%;
+}
+
+.ingredient-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
