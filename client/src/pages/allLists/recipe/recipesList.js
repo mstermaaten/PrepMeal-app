@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecipeService from "../../../api/recipeService";
 import IngredientService from "../../../api/ingredientService";
+import Values from "./totalValues";
 
 const RecipesList = props => {
   const [createdRecipes, setCreatedRecipes] = useState(null);
@@ -10,7 +11,9 @@ const RecipesList = props => {
   const ingredientService = new IngredientService();
   const [created, setCreated] = useState("showResult");
   const [liked, setLiked] = useState("hideResult");
+
   console.log(props.type);
+
   useEffect(() => {
     const getRecipes = async () => {
       debugger;
@@ -23,23 +26,23 @@ const RecipesList = props => {
         console.log("oeps somehting whent wrong with getting the recipess");
       }
     };
-    const getLikedRecipes = async () => {
-      debugger;
-      try {
-        const likedResult = await recipeService.getAllLikedRecipes();
-        if (likedResult) {
-          setLikedRecipes(likedResult);
-        } else {
-          setLikedRecipes([]);
-        }
-        console.log(likedResult);
-        return likedResult;
-      } catch (err) {
-        console.log("oeps somehting whent wrong with getting the recipess");
-      }
-    };
+    // const getLikedRecipes = async () => {
+    //   debugger;
+    //   try {
+    //     const likedResult = await recipeService.getAllLikedRecipes();
+    //     if (likedResult) {
+    //       setLikedRecipes(likedResult);
+    //     } else {
+    //       setLikedRecipes([]);
+    //     }
+    //     console.log(likedResult);
+    //     return likedResult;
+    //   } catch (err) {
+    //     console.log("oeps somehting whent wrong with getting the recipess");
+    //   }
+    // };
 
-    getLikedRecipes();
+    // getLikedRecipes();
     getRecipes();
   }, []);
 
@@ -58,107 +61,14 @@ const RecipesList = props => {
       <div>
         <ul className="recipe-list">
           {createdRecipes.map((recipe, i) => {
+            debugger;
             return (
               <li className="recipe-list-item" key={i}>
                 <div>
                   <p className="name">
                     <span>{recipe.name}</span>
                   </p>
-                  {recipe.ingredients.map(async (ingredient, i) => {
-                    const values = await ingredientService.getOne(
-                      ingredient.ingredientId
-                    );
-                    const p = ingredient.portion;
-                    const protein = p * values.protein;
-                    const kcal = p * values.kcal;
-                    const carbs = p * values.carbs;
-                    const fats = p * values.fats;
-
-                    return (
-                      <div>
-                        <p className="value">
-                          <span>{protein}</span>gr
-                        </p>
-                        <p className="value">
-                          <span>{kcal}</span>kcal
-                        </p>
-                        <p className="value">
-                          <span>{carbs}</span>gr
-                        </p>
-                        <p className="value">
-                          <span>{fats}</span>gr
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  {recipe.ingredients.map(async (ingredient, i) => {
-                    const values = await ingredientService.getOne(
-                      ingredient.ingredientId
-                    );
-
-                    return <p>{values.name}</p>;
-                  })}
-                </div>
-                <Link to={`/recipe/update/${recipe._id}`}>
-                  <button>{props.button}</button>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  };
-
-  const LikedList = () => {
-    return (
-      <div>
-        <ul className="recipe-list">
-          {likedRecipes.map((recipe, i) => {
-            return (
-              <li className="recipe-list-item" key={i}>
-                <div>
-                  <p className="name">
-                    <span>{recipe.name}</span>
-                  </p>
-                  {recipe.ingredients.map(async (ingredient, i) => {
-                    const values = await ingredientService.getOne(
-                      ingredient.ingredientId
-                    );
-                    const p = ingredient.portion;
-                    const protein = p * values.protein;
-                    const kcal = p * values.kcal;
-                    const carbs = p * values.carbs;
-                    const fats = p * values.fats;
-
-                    return (
-                      <div>
-                        <p className="value">
-                          <span>{protein}</span>gr
-                        </p>
-                        <p className="value">
-                          <span>{kcal}</span>kcal
-                        </p>
-                        <p className="value">
-                          <span>{carbs}</span>gr
-                        </p>
-                        <p className="value">
-                          <span>{fats}</span>gr
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  {recipe.ingredients.map(async (ingredient, i) => {
-                    const values = await ingredientService.getOne(
-                      ingredient.ingredientId
-                    );
-
-                    return <p>{values.name}</p>;
-                  })}
+                  <Values id={recipe._id} />
                 </div>
                 <Link to={`/recipe/update/${recipe._id}`}>
                   <button>{props.button}</button>
@@ -191,9 +101,6 @@ const RecipesList = props => {
                 <div className={`${created}`}>
                   <CreatedList type={createdRecipes} button="Edit" />
                 </div>
-                <div className={`${liked}`}>
-                  <LikedList button="Remove" />
-                </div>
               </div>
             )}
           </div>
@@ -204,76 +111,3 @@ const RecipesList = props => {
 };
 
 export default RecipesList;
-
-// const RecipesList = () => {
-//     return (
-//       <div>
-//         <ul className="recipe-list">
-//           {props.type.map((recipe, i) => {
-//             return (
-//               <li className="recipe-list-item" key={i}>
-//                 <div>
-//                   <p className="name">
-//                     <span>{recipe.name}</span>
-//                   </p>
-//                   {recipe.ingredients.map(async (ingredient, i) => {
-//                     const values = await ingredientService.getOne(
-//                       ingredient.ingredientId
-//                     );
-//                     const p = ingredient.portion;
-//                     const protein = p * values.protein;
-//                     const kcal = p * values.kcal;
-//                     const carbs = p * values.carbs;
-//                     const fats = p * values.fats;
-
-//                     return (
-//                       <div>
-//                         <p className="value">
-//                           <span>{protein}</span>gr
-//                         </p>
-//                         <p className="value">
-//                           <span>{kcal}</span>kcal
-//                         </p>
-//                         <p className="value">
-//                           <span>{carbs}</span>gr
-//                         </p>
-//                         <p className="value">
-//                           <span>{fats}</span>gr
-//                         </p>
-//                       </div>
-//                     );
-//                   })}
-//                 </div>
-//                 <div>
-//                   {recipe.ingredients.map(async (ingredient, i) => {
-//                     const values = await ingredientService.getOne(
-//                       ingredient.ingredientId
-//                     );
-
-//                     return <p>{values.name}</p>;
-//                   })}
-//                 </div>
-//                 <Link to={`/recipe/update/${recipe._id}`}>
-//                   <button>{props.button}</button>
-//                 </Link>
-//               </li>
-//             );
-//           })}
-//         </ul>
-//       </div>
-//     );
-//   };
-//   return (
-//     <div className="list-container">
-//         {!createdRecipes ? (
-//           <h1>Loading</h1>
-//         ) : (
-//       <div className={`${created}`}>
-//         <RecipesList type={createdRecipes} button="Edit" />
-//       </div>
-//       <div className={`${liked}`}>
-//         <RecipesList type={likedRecipes} button="Remove" />
-//       </div>
-//         )}
-//     </div>
-//   );

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const data = require("./ingredientSeed");
-const Ingredient = require("../models/Ingredients");
+const Ingredient = require("../models/Ingredient");
 
 mongoose
   .connect("mongodb://localhost:27017/myapp", { useNewUrlParser: true })
