@@ -26,23 +26,7 @@ const RecipesList = props => {
         console.log("oeps somehting whent wrong with getting the recipess");
       }
     };
-    // const getLikedRecipes = async () => {
-    //   debugger;
-    //   try {
-    //     const likedResult = await recipeService.getAllLikedRecipes();
-    //     if (likedResult) {
-    //       setLikedRecipes(likedResult);
-    //     } else {
-    //       setLikedRecipes([]);
-    //     }
-    //     console.log(likedResult);
-    //     return likedResult;
-    //   } catch (err) {
-    //     console.log("oeps somehting whent wrong with getting the recipess");
-    //   }
-    // };
 
-    // getLikedRecipes();
     getRecipes();
   }, []);
 
@@ -111,3 +95,22 @@ const RecipesList = props => {
 };
 
 export default RecipesList;
+
+
+   // const getLikedRecipes = async () => {
+    //   debugger;
+    //   try {
+    //     const likedResult = await recipeService.getAllLikedRecipes();
+    //     if (likedResult) {
+    //       setLikedRecipes(likedResult);
+    //     } else {
+    //       setLikedRecipes([]);
+    //     }
+    //     console.log(likedResult);
+    //     return likedResult;
+    //   } catch (err) {
+    //     console.log("oeps somehting whent wrong with getting the recipess");
+    //   }
+    // };
+
+    // getLikedRecipes();
