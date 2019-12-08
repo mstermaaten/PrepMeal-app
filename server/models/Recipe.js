@@ -7,17 +7,31 @@ const recipeSchema = new Schema(
     // {type: Number, required: true},
     // {type: Array, requires: true},
     // {type: String, enum: []},
+
     name: { type: String, required: true },
+    category: {
+      type: String,
+      enum: ["Breakfast", "Snacks", "Lunch", "Dinner", "Rest"]
+    },
+    img: {
+      type: String
+    },
+    time: { type: String },
+    diet: {
+      type: String,
+      enum: ["Keto", "Vegan", "Vegetarian", "Paleo", "Mediterranean", "Rest"]
+    },
     ingredients: [
       {
         ingredientId: {
           type: Schema.Types.ObjectId,
           ref: "Ingredient"
         },
-        portion: { type: Number, default: 1 },
+        portion: { type: Number },
         _id: false
       }
     ],
+    nutrients: { protein: Number, kcal: Number, carbs: Number, fats: Number },
     createdBy: { type: Schema.Types.ObjectId, required: true },
     likes: [
       {

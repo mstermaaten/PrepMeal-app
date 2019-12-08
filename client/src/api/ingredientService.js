@@ -8,11 +8,47 @@ export default class IngredientService {
     });
   }
 
+  getByFilter = async filter => {
+    try {
+      const { data: Ingredients } = await this.service.get(
+        "/ingredient/filter/" + filter
+      );
+      return Ingredients;
+    } catch (err) {
+      console.log("error getting ingredient" + err);
+      return err;
+    }
+  };
+
+  getByCategory = async category => {
+    try {
+      const { data: Ingredients } = await this.service.get(
+        "/ingredient/category/" + category
+      );
+      return Ingredients;
+    } catch (err) {
+      console.log("error getting ingredient" + err);
+      return err;
+    }
+  };
+
   getOne = async id => {
     try {
       const { data: oneIngredients } = await this.service.get(
         "/ingredient/" + id
       );
+      return oneIngredients;
+    } catch (err) {
+      console.log("error getting ingredient" + err);
+      return err;
+    }
+  };
+
+  getAllIng = async ids => {
+    try {
+      const { data: oneIngredients } = await this.service.post("/ingredient", {
+        ids
+      });
       return oneIngredients;
     } catch (err) {
       console.log("error getting ingredient" + err);

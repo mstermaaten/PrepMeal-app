@@ -1,7 +1,6 @@
 module.exports = [
   {
     name: "broccoli",
-    portion: 150,
     protein: 4.2,
     kcal: 50,
     carbs: 10.5,
@@ -11,7 +10,6 @@ module.exports = [
   },
   {
     name: "Sweet Potato",
-    portion: 250,
     protein: 1.5,
     kcal: 110,
     carbs: 24,
@@ -21,7 +19,6 @@ module.exports = [
   },
   {
     name: "Chicken",
-    portion: 200,
     protein: 24,
     kcal: 115,
     carbs: 0,
@@ -31,7 +28,6 @@ module.exports = [
   },
   {
     name: "Nut Mix w raisins",
-    portion: 100,
     protein: 17,
     kcal: 545,
     carbs: 30,
@@ -41,7 +37,6 @@ module.exports = [
   },
   {
     name: "Apple",
-    portion: 120,
     protein: 0.4,
     kcal: 60,
     carbs: 16,
@@ -51,7 +46,6 @@ module.exports = [
   },
   {
     name: "Pear",
-    portion: 120,
     protein: 0.4,
     kcal: 60,
     carbs: 16,
@@ -61,7 +55,6 @@ module.exports = [
   },
   {
     name: "Zuchini",
-    portion: 175,
     protein: 1.4,
     kcal: 16.6,
     carbs: 3.14,
@@ -71,7 +64,6 @@ module.exports = [
   },
   {
     name: "Salmon",
-    portion: 150,
     protein: 19,
     kcal: 220,
     carbs: 0,
@@ -81,7 +73,6 @@ module.exports = [
   },
   {
     name: "Bantam Potato",
-    portion: 200,
     protein: 2,
     kcal: 98,
     carbs: 20,
@@ -91,7 +82,6 @@ module.exports = [
   },
   {
     name: "Lamb's Lettuce",
-    portion: 220,
     protein: 2,
     kcal: 20,
     carbs: 3,
@@ -101,7 +91,6 @@ module.exports = [
   },
   {
     name: "Tomato",
-    portion: 150,
     protein: 1,
     kcal: 19,
     carbs: 2.9,
@@ -111,7 +100,6 @@ module.exports = [
   },
   {
     name: "Cucumber",
-    portion: 100,
     protein: 0.6,
     kcal: 14,
     carbs: 2.2,
@@ -121,7 +109,6 @@ module.exports = [
   },
   {
     name: "Feta Cheese",
-    portion: 50,
     protein: 14.2,
     kcal: 252,
     carbs: 1.2,
@@ -130,7 +117,6 @@ module.exports = [
     __v: 0
   },
   {
-    portion: 30,
     protein: 1.2,
     kcal: 36,
     carbs: 6.1,

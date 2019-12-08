@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import AuthService from "../api/authService";
 
 const Login = props => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const { user, setUser } = props;
 
   const authService = new AuthService();
 
@@ -18,22 +20,24 @@ const Login = props => {
   };
 
   const submitHandler = async e => {
-    debugger;
     e.preventDefault();
     try {
       const userInfo = {
         username: username,
         password: password
       };
-      const user = await authService.login(userInfo);
-      props.history.push("/profile", user);
+      const userL = await authService.login(userInfo);
+      if (userL.username) {
+        setUser(userL);
+        props.history.push("/profile");
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div>
+    <div className="login-block">
       <h1>Login</h1>
       <form onSubmit={submitHandler}>
         <input
@@ -54,4 +58,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

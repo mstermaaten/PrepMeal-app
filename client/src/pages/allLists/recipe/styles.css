@@ -5,3 +5,72 @@
 .hideResult {
   display: none;
 }
+
+.recipe-list {
+  padding: 5px;
+}
+
+.recipe-list .parent {
+  list-style: none;
+}
+
+.recipe-list-item {
+  list-style: none;
+  max-width: 35vw;
+  border: 0.5px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-box-shadow: 0px 4px 3px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 3px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 3px -2px rgba(0, 0, 0, 0.75);
+  padding: 5px;
+}
+
+.values {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.values span {
+  font-weight: bold;
+}
+
+.values p {
+  margin: 5px;
+}
+
+.list-items {
+  list-style: circle;
+}
+
+.list-items span {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.list-items span p {
+  margin: 5px;
+  width: 50%;
+}
+
+.recipe-items-list {
+  width: 60%;
+  margin: 5px;
+}
+
+.recipe-header .name {
+  width: 30%;
+}
+
+.recipe-header .values p {
+  width: 13%;
+}

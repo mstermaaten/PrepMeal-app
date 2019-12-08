@@ -15,7 +15,7 @@ export default class AuthService {
 
   isLoggedIn = async () => {
     try {
-      const { data } = await this.service.get("/auth/loggedIn");
+      const { data } = await this.service.get("/auth/isLoggedIn");
       return data;
     } catch (err) {
       console.log("error on is logged in" + err);

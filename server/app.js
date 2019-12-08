@@ -6,10 +6,12 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 const apiRouter = require("./routes/authRoutes");
-const createIngrRouter = require("./routes/createNewIngredient");
-const createRecipeRouter = require("./routes/createNewRecipe");
-const createDayPlanRouter = require("./routes/createNewDayPlan");
-const createWeekPlanRouter = require("./routes/createNewWeekPlan");
+const createIngrRouter = require("./routes/IngredientRouter");
+const createRecipeRouter = require("./routes/RecipeRouter");
+const createDayPlanRouter = require("./routes/DayPlanRouter");
+const createWeekPlanRouter = require("./routes/WeekPlanRouter");
+const imageRouter = require("./routes/imageUploadRouter");
+require("dotenv").config();
 
 var app = express();
 
@@ -66,6 +68,7 @@ app.use("/ingredient", createIngrRouter);
 app.use("/recipe", createRecipeRouter);
 app.use("/dayplan", createDayPlanRouter);
 app.use("/weekplan", createWeekPlanRouter);
+app.use("/upload", imageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

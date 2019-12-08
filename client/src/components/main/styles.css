@@ -1,0 +1,26 @@
+.header {
+  background-color: #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.menu-options button {
+  margin: 0px 5px;
+  padding: 10px 30px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+}
+
+.login {
+  background-color: #80ff80;
+}
+
+.register {
+  background-color: #ff704d;
+}

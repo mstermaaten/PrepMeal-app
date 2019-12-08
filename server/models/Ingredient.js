@@ -30,7 +30,8 @@ const ingredientSchema = new Schema(
         "Dairy",
         "Leafly",
         "Dressing",
-        "Oil"
+        "Oil",
+        "Rest"
       ]
     },
     upvoted: [{ type: Schema.Types.ObjectId, ref: "User" }],

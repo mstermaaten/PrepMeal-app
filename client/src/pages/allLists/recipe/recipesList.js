@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecipeService from "../../../api/recipeService";
 import IngredientService from "../../../api/ingredientService";
-import Values from "./totalValues";
+import Values from "./recipeBlock/totalValues";
+
+import "./styles.css";
 
 const RecipesList = props => {
   const [createdRecipes, setCreatedRecipes] = useState(null);
@@ -16,7 +18,6 @@ const RecipesList = props => {
 
   useEffect(() => {
     const getRecipes = async () => {
-      debugger;
       try {
         const recipesResult = await recipeService.getAllCreatedRecipes();
         setCreatedRecipes(recipesResult);
@@ -45,15 +46,9 @@ const RecipesList = props => {
       <div>
         <ul className="recipe-list">
           {createdRecipes.map((recipe, i) => {
-            debugger;
             return (
-              <li className="recipe-list-item" key={i}>
-                <div>
-                  <p className="name">
-                    <span>{recipe.name}</span>
-                  </p>
-                  <Values id={recipe._id} />
-                </div>
+              <li className="parent" key={i}>
+                <Values recipe={recipe} />
                 <Link to={`/recipe/update/${recipe._id}`}>
                   <button>{props.button}</button>
                 </Link>
@@ -96,21 +91,20 @@ const RecipesList = props => {
 
 export default RecipesList;
 
+// const getLikedRecipes = async () => {
+//
+//   try {
+//     const likedResult = await recipeService.getAllLikedRecipes();
+//     if (likedResult) {
+//       setLikedRecipes(likedResult);
+//     } else {
+//       setLikedRecipes([]);
+//     }
+//     console.log(likedResult);
+//     return likedResult;
+//   } catch (err) {
+//     console.log("oeps somehting whent wrong with getting the recipess");
+//   }
+// };
 
-   // const getLikedRecipes = async () => {
-    //   debugger;
-    //   try {
-    //     const likedResult = await recipeService.getAllLikedRecipes();
-    //     if (likedResult) {
-    //       setLikedRecipes(likedResult);
-    //     } else {
-    //       setLikedRecipes([]);
-    //     }
-    //     console.log(likedResult);
-    //     return likedResult;
-    //   } catch (err) {
-    //     console.log("oeps somehting whent wrong with getting the recipess");
-    //   }
-    // };
-
-    // getLikedRecipes();
+// getLikedRecipes();
