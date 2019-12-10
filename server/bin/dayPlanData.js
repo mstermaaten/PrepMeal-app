@@ -5,20 +5,20 @@ module.exports = [
     diet: "Keto",
     recipes: [
       {
-        recipeId: "5de94c30c89b731da3d5e40e",
+        recipeId: "5defa89e2e5df32199b5036e",
         meal: "Breakfast"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40c",
+        recipeId: "5defa89e2e5df32199b5036c",
         meal: "Lunch"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40d",
+        recipeId: "5defa89e2e5df32199b5036d",
         meal: "Diner"
       }
     ],
     nutrients: { protein: 12, kcal: 150, carbs: 16, fats: 4 },
-    createdBy: "5dcb0c0a277fa43ad82bac3b"
+    createdBy: "5defa306238193201c0e8a98"
   },
   {
     name: "High Protein Day Plan",
@@ -26,20 +26,20 @@ module.exports = [
     diet: "Rest",
     recipes: [
       {
-        recipeId: "5de94c30c89b731da3d5e40e",
+        recipeId: "5defa89e2e5df32199b5036e",
         meal: "Breakfast"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40c",
+        recipeId: "5defa89e2e5df32199b5036c",
         meal: "Lunch"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40d",
+        recipeId: "5defa89e2e5df32199b5036d",
         meal: "Diner"
       }
     ],
     nutrients: { protein: 12, kcal: 150, carbs: 16, fats: 4 },
-    createdBy: "5dcb0c0a277fa43ad82bac3b"
+    createdBy: "5defa306238193201c0e8a98"
   },
   {
     name: "Low Fat Day Plan",
@@ -47,20 +47,20 @@ module.exports = [
     diet: "Vegan",
     recipes: [
       {
-        recipeId: "5de94c30c89b731da3d5e40e",
+        recipeId: "5defa89e2e5df32199b5036e",
         meal: "Breakfast"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40c",
+        recipeId: "5defa89e2e5df32199b5036c",
         meal: "Lunch"
       },
       {
-        recipeId: "5de94c30c89b731da3d5e40d",
+        recipeId: "5defa89e2e5df32199b5036d",
         meal: "Diner"
       }
     ],
     nutrients: { protein: 12, kcal: 150, carbs: 16, fats: 4 },
-    createdBy: "5dcda34019382c3c06f018ba",
+    createdBy: "5defa306238193201c0e8a98",
     likes: [{ user: "5dcb0c0a277fa43ad82bac3b" }]
   }
 ];

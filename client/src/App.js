@@ -49,8 +49,6 @@ function App() {
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
         <Route exact path="/recipe" component={RecipesList} />
         <Route path="/recipe/create" component={Builder} />
-        <Route exact path="/dayplan" component={DayPlanList} />
-        <Route path="/dayplan/create" component={DayPlanBuilder} />
       </Switch>
     </>
   );

@@ -22,15 +22,20 @@ const ingredientSchema = new Schema(
       enum: [
         "Vegetables",
         "Fruits",
+        "Spreads",
         "Grains",
         "Beans",
         "Nuts",
+        "Mushrooms",
         "Meat",
         "Fish",
+        "Shellfish",
         "Dairy",
         "Leafly",
         "Dressing",
         "Oil",
+        "Egg",
+        "Honey",
         "Rest"
       ]
     },

@@ -5,7 +5,13 @@ const userSchema = new Schema(
   {
     username: { type: String, unique: true },
     password: { type: String, required: true },
-    recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
+    foto: {
+      type: String,
+      default:
+        "https://carlisletheacarlisletheatre.org/images/person-icon-png-4.jpg"
+    },
+    createdRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
+    likedRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },

@@ -4,22 +4,21 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-router.post("/register", (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   const { username, password } = req.body;
+  const hash = bcrypt.hashSync(password, saltRounds);
 
   if (!username || !password) {
     res.status(400).json({ message: "please fill in all the credentials" });
     return false;
   }
 
-  bcrypt.hash(password, saltRounds, async function(err, hash) {
-    try {
-      const newUser = await User.create({ username, password: hash });
-      res.status(200).json(newUser);
-    } catch (err) {
-      res.status(500).json({ message: "oeps something went wrong" + err });
-    }
-  });
+  try {
+    const newUser = await User.create({ username, password: hash });
+    res.status(200).json(newUser);
+  } catch (err) {
+    res.status(500).json({ message: "oeps something went wrong" + err });
+  }
 });
 
 router.post("/login", async (req, res, next) => {
@@ -31,13 +30,14 @@ router.post("/login", async (req, res, next) => {
 
   try {
     const user = await User.findOne({ username });
-    if (user && user.password === password) {
+    const match = await bcrypt.compare(password, user.password);
+    if (user && match) {
       req.session.user = user;
       res.status(200).json(user);
     } else {
-      res
-        .status(400)
-        .json({ message: "please provide the correct credentials" });
+      res.status(400).json({
+        message: `please provide the correct credentials`
+      });
     }
   } catch (err) {
     res.status(500).json({ message: "oeps something went wrong" + err });

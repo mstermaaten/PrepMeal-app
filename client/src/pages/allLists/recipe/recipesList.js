@@ -19,6 +19,7 @@ const RecipesList = props => {
   useEffect(() => {
     const getRecipes = async () => {
       try {
+        debugger;
         const recipesResult = await recipeService.getAllCreatedRecipes();
         setCreatedRecipes(recipesResult);
         console.log(recipesResult);
@@ -43,19 +44,14 @@ const RecipesList = props => {
 
   const CreatedList = () => {
     return (
-      <div>
-        <ul className="recipe-list">
-          {createdRecipes.map((recipe, i) => {
-            return (
-              <li className="parent" key={i}>
-                <Values recipe={recipe} />
-                <Link to={`/recipe/update/${recipe._id}`}>
-                  <button>{props.button}</button>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="parent">
+        {createdRecipes.map((recipe, i) => {
+          return (
+            <div key={i}>
+              <Values recipe={recipe} />
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -77,9 +73,7 @@ const RecipesList = props => {
               <h1>Loading</h1>
             ) : (
               <div>
-                <div className={`${created}`}>
-                  <CreatedList type={createdRecipes} button="Edit" />
-                </div>
+                <CreatedList />
               </div>
             )}
           </div>

@@ -14,19 +14,19 @@ module.exports = [
     },
     ingredients: [
       {
-        ingredientId: "5de6bdea6181d1139b273494",
+        ingredientId: "5defa7d1f9a55c21624d5b23",
         portion: 1.5
       },
       {
-        ingredientId: "5de6bdea6181d1139b273495",
+        ingredientId: "5defa7d1f9a55c21624d5b24",
         portion: 2
       },
       {
-        ingredientId: "5de6bdea6181d1139b273496",
+        ingredientId: "5defa7d1f9a55c21624d5b25",
         portion: 2
       }
     ],
-    createdBy: "5dcb0c0a277fa43ad82bac3b",
+    createdBy: "5defa306238193201c0e8a98",
     likes: []
   },
   {
@@ -44,19 +44,19 @@ module.exports = [
     },
     ingredients: [
       {
-        ingredientId: "5de6bdea6181d1139b27349c",
+        ingredientId: "5defa7d1f9a55c21624d5b2b",
         portion: 2
       },
       {
-        ingredientId: "5de6bdea6181d1139b27349b",
+        ingredientId: "5defa7d1f9a55c21624d5b2a",
         portion: 1.5
       },
       {
-        ingredientId: "5de6bdea6181d1139b27349a",
+        ingredientId: "5defa7d1f9a55c21624d5b29",
         portion: 1.75
       }
     ],
-    createdBy: "5dcb0c0a277fa43ad82bac3b",
+    createdBy: "5defa306238193201c0e8a98",
     likes: []
   },
   {
@@ -74,19 +74,19 @@ module.exports = [
     },
     ingredients: [
       {
-        ingredientId: "5de6bdea6181d1139b273497",
+        ingredientId: "5defa7d1f9a55c21624d5b26",
         portion: 0.5
       },
       {
-        ingredientId: "5de6bdea6181d1139b273499",
+        ingredientId: "5defa7d1f9a55c21624d5b27",
         portion: 1
       },
       {
-        ingredientId: "5de6bdea6181d1139b273498",
+        ingredientId: "5defa7d1f9a55c21624d5b28",
         portion: 1
       }
     ],
     createdBy: "5dcda34019382c3c06f018ba",
-    likes: [{ user: "5dcb0c0a277fa43ad82bac3b" }]
+    likes: [{ user: "5defa306238193201c0e8a98" }]
   }
 ];

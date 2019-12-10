@@ -2,20 +2,18 @@ import React from "react";
 
 function List(props) {
   const list = props.ingredients;
-  
+
   return (
-    <ul className="recipe-items-list">
+    <div className="recipe-block-ingredients">
       {list.map(ingredient => {
         return (
-          <li className="list-items">
-            <span>
-              <p>{ingredient.name}</p>
-              <p>{ingredient.category}</p>
-            </span>
-          </li>
+          <img
+            className="icon-ingredient"
+            src={require(`../icons/${ingredient.category}.svg`)}
+          />
         );
       })}
-    </ul>
+    </div>
   );
 }
 
