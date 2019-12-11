@@ -7,6 +7,7 @@ router.post("/create", async (req, res, next) => {
   const {
     name,
     category,
+    description,
     diet,
     imageFile,
     time,
@@ -19,6 +20,7 @@ router.post("/create", async (req, res, next) => {
     const newRecipe = new Recipe({
       name,
       category,
+      description,
       diet,
       img: imageFile,
       createdBy: userId,

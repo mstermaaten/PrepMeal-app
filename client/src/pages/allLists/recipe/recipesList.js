@@ -46,18 +46,14 @@ const RecipesList = props => {
     return (
       <div className="parent">
         {createdRecipes.map((recipe, i) => {
-          return (
-            <div key={i}>
-              <Values recipe={recipe} />
-            </div>
-          );
+          return <Values key={i} recipe={recipe} />;
         })}
       </div>
     );
   };
 
   return (
-    <div className="container">
+    <div className="created-container">
       <h1>Recipes</h1>
       <div className="list-container">
         <Link to="/recipe/create">
@@ -68,15 +64,8 @@ const RecipesList = props => {
             <button onClick={onClickCreated}>Created Recipes</button>
             <button onClick={onClickLiked}>Liked Recipes</button>
           </div>
-          <div className="list-container">
-            {!createdRecipes ? (
-              <h1>Loading</h1>
-            ) : (
-              <div>
-                <CreatedList />
-              </div>
-            )}
-          </div>
+          <h2>Created Recipes:</h2>
+          <>{!createdRecipes ? <h1>Loading</h1> : <CreatedList />}</>
         </div>
       </div>
     </div>

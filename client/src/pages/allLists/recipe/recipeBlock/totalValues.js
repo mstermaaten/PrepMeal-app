@@ -39,19 +39,28 @@ function Values(props) {
               <p className="duration">Duration: {recipe.time}</p>
               <List ingredients={ingredients} />
             </div>
-            <div className="values">
-              <p>
-                <span>{nutrients.protein.toFixed(2)}</span>gr protein
-              </p>
-              <p>
-                <span>{nutrients.kcal.toFixed(2)}</span> kcal
-              </p>
-              <p>
-                <span>{nutrients.carbs.toFixed(2)}</span>gr carbs
-              </p>
-              <p>
-                <span>{nutrients.fats.toFixed(2)}</span>gr fats
-              </p>
+
+            <div className="total-nutrients-wrapper">
+              <div className="group">
+                <div className="value kcal">
+                  <img src={require("../icons/fire.png")} />
+                  <span>{nutrients.kcal.toFixed(2)}</span>kcal
+                </div>
+                <div className="value protein">
+                  <img src={require("../icons/muscle.png")} />
+                  <span>{nutrients.protein.toFixed(2)}</span>gr
+                </div>
+              </div>
+              <div className="group">
+                <div className="value sugar">
+                  <img src={require("../icons/sweet.png")} />
+                  <span>{nutrients.carbs.toFixed(2)}</span>gr
+                </div>
+                <div className="value oil">
+                  <img src={require("../icons/oil.png")} />
+                  <span>{nutrients.fats.toFixed(2)}</span>gr
+                </div>
+              </div>
             </div>
           </div>
           <Link className="link-position" to={`/recipe/update/${recipe._id}`}>

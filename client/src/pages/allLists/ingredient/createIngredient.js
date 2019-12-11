@@ -6,6 +6,8 @@ import "./styles.css";
 
 function CreateIngredient(props) {
   const ingredientService = new IngredientService();
+  const { createHandler } = props;
+
   const onSubmitHandles = async body => {
     try {
       const newIngredient = await ingredientService.create(body);
@@ -13,7 +15,7 @@ function CreateIngredient(props) {
     } catch (err) {
       console.log(err);
     } finally {
-      props.history.push("/ingredient");
+      createHandler();
     }
   };
 

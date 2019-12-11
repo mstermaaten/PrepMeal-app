@@ -27,6 +27,7 @@ const ingredientSchema = new Schema(
         "Beans",
         "Nuts",
         "Mushrooms",
+        "Meat Substitutes",
         "Meat",
         "Fish",
         "Shellfish",
@@ -34,8 +35,6 @@ const ingredientSchema = new Schema(
         "Leafly",
         "Dressing",
         "Oil",
-        "Egg",
-        "Honey",
         "Rest"
       ]
     },

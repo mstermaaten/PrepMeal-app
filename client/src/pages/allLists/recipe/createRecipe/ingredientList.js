@@ -3,7 +3,7 @@ import IngredientService from "../../../../api/ingredientService";
 import { Link } from "react-router-dom";
 
 function IngredientList(props) {
-  const { toggleHandler } = props;
+  const { toggleHandler, createHandler } = props;
   const ingredientService = new IngredientService();
   const [currentList, setCurrentList] = useState([]);
   const [category, setCategory] = useState("Vegetables");
@@ -46,6 +46,7 @@ function IngredientList(props) {
 
   return (
     <div className="builder-ingredient-add">
+      <h2>Add ingredients:</h2>
       <div className="search-bar-wrapper">
         <img src={require("../icons/Search.png")} />
         <input
@@ -60,20 +61,25 @@ function IngredientList(props) {
         <p onClick={getClickHandler("Fruits")}>Fruits</p>
         <p onClick={getClickHandler("Grains")}>Grains</p>
         <p onClick={getClickHandler("Beans")}>Beans</p>
+        <p onClick={getClickHandler("Mushrooms")}>Mushrooms</p>
         <p onClick={getClickHandler("Nuts")}>Nuts</p>
         <p onClick={getClickHandler("Meat")}>Meat</p>
+        <p onClick={getClickHandler("Meat Substitutes")}>Meat Substitutes</p>
         <p onClick={getClickHandler("Fish")}>Fish</p>
+        <p onClick={getClickHandler("Shellfish")}>Shellfish</p>
         <p onClick={getClickHandler("Dairy")}>Dairy</p>
         <p onClick={getClickHandler("Leafly")}>Leafly</p>
-        <p onClick={getClickHandler("Dressing")}>Dressing</p>
         <p onClick={getClickHandler("Oil")}>Oil</p>
+        <p onClick={getClickHandler("Dressing")}>Dressing</p>
+        <p onClick={getClickHandler("Spreads")}>Spreads</p>
+        <p onClick={getClickHandler("Rest")}>Rest</p>
       </div>
 
       {currentList.length >= 1 ? (
         <ul className="ingredient-item-list">
           {currentList.map((item, i) => (
             <li key={i} className="ingredient-item">
-              <div className="values-wrapper">
+              <div>
                 <div className="ingredient-header">
                   <img src={require(`../icons/${item.category}.svg`)} />
                   <p className="name">{item.name}</p>
@@ -98,19 +104,24 @@ function IngredientList(props) {
                 </div>
               </div>
 
-              <img className="add-icon"
+              <img
+                className="add-icon"
                 onClick={() => toggleHandler(item)}
                 src={require("../icons/plus.png")}
               />
             </li>
           ))}
+          <li className="create-button" onClick={() => createHandler()}>
+            Create new ingredient
+          </li>
         </ul>
       ) : (
         <div>
           <p>Not finding what your looking for? Make the ingredient:</p>
-          <Link to="/ingredient/create">
-            <button>Create now!</button>
-          </Link>
+
+          <button className="create-button" onClick={() => createHandler()}>
+            Create now!
+          </button>
         </div>
       )}
     </div>

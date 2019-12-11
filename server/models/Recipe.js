@@ -11,7 +11,7 @@ const recipeSchema = new Schema(
     name: { type: String, required: true },
     category: {
       type: String,
-      enum: ["Breakfast", "Snacks", "Lunch", "Dinner", "Rest"]
+      enum: ["Breakfast", "Snack", "Lunch", "Dinner", "Dessert"]
     },
     img: {
       type: String
@@ -21,6 +21,7 @@ const recipeSchema = new Schema(
       type: String,
       enum: ["Keto", "Vegan", "Vegetarian", "Paleo", "Mediterranean", "Rest"]
     },
+    description: { type: String },
     ingredients: [
       {
         ingredientId: {

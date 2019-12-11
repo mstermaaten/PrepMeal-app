@@ -22,39 +22,53 @@ function Values(props) {
 
   return (
     <div className="values">
-      <p>
-        <span>Total:</span>
-      </p>
+      <h3>Nutrients of your recipe:</h3>
       {props.items.length >= 1 ? (
-        <>
-          <p>
-            <span>{ingredientValues.protein.toFixed(2)}</span>gr protein
-          </p>
-          <p>
-            <span>{ingredientValues.kcal.toFixed(2)}</span> kcal
-          </p>
-          <p>
-            <span>{ingredientValues.carbs.toFixed(2)}</span>gr carbs
-          </p>
-          <p>
-            <span>{ingredientValues.fats.toFixed(2)}</span>gr fats
-          </p>
-        </>
+        <div className="total-nutrients-wrapper">
+          <div className="group">
+            <div className="value kcal">
+              <img src={require("../icons/fire.png")} />
+              <span>{ingredientValues.kcal.toFixed(2)}</span>kcal
+            </div>
+            <div className="value protein">
+              <img src={require("../icons/muscle.png")} />
+              <span>{ingredientValues.protein.toFixed(2)}</span>gr
+            </div>
+          </div>
+          <div className="group">
+            <div className="value sugar">
+              <img src={require("../icons/sweet.png")} />
+              <span>{ingredientValues.carbs.toFixed(2)}</span>gr
+            </div>
+            <div className="value oil">
+              <img src={require("../icons/oil.png")} />
+              <span>{ingredientValues.fats.toFixed(2)}</span>gr
+            </div>
+          </div>
+        </div>
       ) : (
-        <>
-          <p>
-            <span>0</span>gr protein
-          </p>
-          <p>
-            <span>0</span> kcal
-          </p>
-          <p>
-            <span>0</span>gr carbs
-          </p>
-          <p>
-            <span>0</span>gr fats
-          </p>
-        </>
+        <div className="total-nutrients-wrapper">
+          <div className="group">
+            <div className="value kcal">
+              <img src={require("../icons/fire.png")} />
+              <span>0.00</span>kcal
+            </div>
+            <div className="value protein">
+              <img src={require("../icons/muscle.png")} />
+              <span>0.00</span>gr
+            </div>
+          </div>
+          <div className="group">
+            <div className="value sugar">
+              <img src={require("../icons/sweet.png")} />
+              <span>0.00</span>gr
+            </div>
+            <div className="value oil">
+              <img src={require("../icons/oil.png")} />
+              <span>0.00</span>gr
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

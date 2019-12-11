@@ -10,9 +10,7 @@ export default class RecipeService {
 
   getOne = async id => {
     try {
-      const { data: oneRecipe } = await this.service.get(
-        "/recipe/find/" + id
-      );
+      const { data: oneRecipe } = await this.service.get("/recipe/find/" + id);
       return oneRecipe;
     } catch (err) {
       console.log("error getting recipe" + err);
@@ -43,6 +41,7 @@ export default class RecipeService {
   create = async (
     name,
     category,
+    description,
     diet,
     imageFile,
     time,
@@ -54,6 +53,7 @@ export default class RecipeService {
       const { data } = await this.service.post("/recipe/create", {
         name,
         category,
+        description,
         diet,
         imageFile,
         time,

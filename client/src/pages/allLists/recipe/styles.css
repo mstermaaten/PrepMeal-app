@@ -10,18 +10,29 @@
   padding: 5px;
 }
 
-.recipe-list .parent {
+.list-container {
+  width: 95%;
+}
+
+.parent {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 5px;
 }
 
 .recipe-list-item-wrapper {
-  list-style: none;
+  min-width: 40%;
+  max-width: 40%;
   border-radius: 15px;
   -webkit-box-shadow: 0px 0px 25px -13px #616161;
   box-shadow: 0px 0px 25px -13px #616161;
   display: flex;
-  max-width: 60%;
-  margin: 20px 0px;
+  margin: 20px;
+  background-color: white;
 }
 .recipe-list-item {
   display: flex;

@@ -46,7 +46,7 @@
 .ingredient-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  max-width: 25vw;
 }
 
 .hide {
@@ -55,4 +55,79 @@
 
 .show {
   display: block;
+}
+
+.create-container {
+  width: 30vw;
+  max-width: 30vw;
+  padding: 20px 40px;
+  border-radius: 7px;
+  background-color: white;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -18vw;
+  -webkit-box-shadow: 0px 15px 50px 5px rgba(204, 204, 204, 0.75);
+  -moz-box-shadow: 0px 15px 50px 5px rgba(204, 204, 204, 0.75);
+  box-shadow: 0px 15px 50px 5px rgba(204, 204, 204, 0.75);
+}
+
+.group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingredient-form input {
+  -webkit-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  -moz-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  border-radius: 0.5em;
+  background-color: white;
+  padding: 10px 15px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #2e2e2e;
+  font-size: 14px;
+}
+
+.ingredient-form label {
+  color: #3ec1d3;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0px;
+}
+
+.group-item,
+.group-single,
+.ingredient-form {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0px;
+}
+
+.ingredient-form {
+  align-items: center;
+}
+
+.group-item {
+  width: 45%;
+}
+.group-single {
+  width: 100%;
+}
+
+.ingredient-form button {
+  max-width: 250px;
+  padding: 10px 30px;
+  border-radius: 7px;
+  border: none;
+  background-color: #5da2bb;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 10px 0px;
 }

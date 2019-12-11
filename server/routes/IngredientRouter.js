@@ -36,9 +36,9 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/create", async (req, res, next) => {
-  const { name, portion, protein, kcal, carbs, fats, category } = req.body;
+  const { name, protein, kcal, carbs, fats, category } = req.body;
 
-  if (!name || !portion || !protein || !kcal || !carbs || !fats || !category) {
+  if (!name || !protein || !kcal || !carbs || !fats || !category) {
     res.status(400).json({ message: "please fill in all the credentials" });
     return false;
   }

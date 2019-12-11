@@ -7,9 +7,16 @@ function Portion(props) {
 
   return (
     <div className="portion-container">
-      <h1>Set Your Portion</h1>
+      <h1>Set Your Portion:</h1>
 
-      <div>{"Portion: " + Math.round(portion * 100) + " gr"}</div>
+      <div className="name-portion">
+        <span className="name">{item.name}</span>
+        <div className="portion">
+          <p>Portion:</p>
+          <span>{Math.round(portion * 100)}</span>
+          <p>gr</p>
+        </div>
+      </div>
       <Slider
         axis="x"
         xstep={0.1}
@@ -17,26 +24,38 @@ function Portion(props) {
         xmax={10}
         x={portion}
         onChange={({ x }) => setPortion(parseFloat(x.toFixed(2)))}
+        style={{ width: "70%", margin: "5px 0px" }}
       />
 
-      <div className="ingredient-item">
-        <p className="name">{item.name}</p>
-        <p className="value">
-          <span>{(item.protein * portion).toFixed(2)}</span>gr
-        </p>
-        <p className="value">
-          <span>{(item.kcal * portion).toFixed(2)}</span>kcal
-        </p>
-        <p className="value">
-          <span>{(item.carbs * portion).toFixed(2)}</span>gr
-        </p>
-        <p className="value">
-          <span>{(item.fats * portion).toFixed(2)}</span>gr
-        </p>
+      <div className="values-wrapper">
+        <div className="nutrients-wrapper">
+          <div className="value kcal">
+            <img src={require("../icons/fire.png")} />
+            <span>{(item.kcal * portion).toFixed(2)}</span>kcal
+          </div>
+          <div className="value protein">
+            <img src={require("../icons/muscle.png")} />
+            <span>{(item.protein * portion).toFixed(2)}</span>gr
+          </div>
+          <div className="value sugar">
+            <img src={require("../icons/sweet.png")} />
+            <span>{(item.carbs * portion).toFixed(2)}</span>gr
+          </div>
+          <div className="value oil">
+            <img src={require("../icons/oil.png")} />
+            <span>{(item.fats * portion).toFixed(2)}</span>gr
+          </div>
+        </div>
       </div>
-      <div>
-        <p onClick={() => toggleHandler()}>Close</p>
-        <p onClick={() => addHandler({ ...item, portion })}>Add Items</p>
+      <div className="portion-buttons">
+        <img
+          src={require("../icons/remove.png")}
+          onClick={() => toggleHandler()}
+        />
+        <img
+          src={require("../icons/plus.png")}
+          onClick={() => addHandler({ ...item, portion })}
+        />
       </div>
     </div>
   );
