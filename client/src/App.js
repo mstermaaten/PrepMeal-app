@@ -33,6 +33,8 @@ function App() {
 
   return (
     <>
+    <div className="clippath"></div>
+      <div className="clippath-two"></div>
       <Header user={user} setUser={setUser} />
       <Switch>
         <Route exact path="/" component={Landing} />

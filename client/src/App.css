@@ -3,6 +3,37 @@ input:focus {
   outline: none;
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #2e2e2e;
+}
+
+.clippath,
+.clippath-two {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  background-image: linear-gradient(
+    145deg,
+    rgba(94, 195, 233, 0.2) 0%,
+    rgba(210, 249, 255, 0.2) 100%
+  );
+
+  z-index: -22;
+}
+
+.clippath {
+  top: 0;
+  right: 0;
+  clip-path: polygon(24% 0, 100% 0%, 100% 45%, 82% 16%);
+}
+
+.clippath-two {
+  bottom: 0;
+  left: 0;
+  clip-path: polygon(0 70%, 21% 65%, 53% 100%, 0 100%);
+}
+
 .landing {
   width: 100vw;
   height: 100vh;

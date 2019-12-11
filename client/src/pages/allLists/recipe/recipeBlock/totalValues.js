@@ -27,7 +27,10 @@ function Values(props) {
     <>
       {nutrients.protein ? (
         <div className="recipe-list-item-wrapper">
-          <img className="recipe-img" src={recipe.img} />
+          <div
+            className="recipe-img"
+            style={{ backgroundImage: `url(${recipe.img})` }}
+          />
           <div className="recipe-list-item">
             <div className="recipe-header">
               <p className="name">

@@ -46,60 +46,73 @@ function IngredientList(props) {
 
   return (
     <div className="builder-ingredient-add">
-      <div className="parent-header">
-        <div className="category-header">
-          <p onClick={getClickHandler("Vegetables")}>Vegetables</p>
-          <p onClick={getClickHandler("Fruits")}>Fruits</p>
-          <p onClick={getClickHandler("Grains")}>Grains</p>
-          <p onClick={getClickHandler("Beans")}>Beans</p>
-          <p onClick={getClickHandler("Nuts")}>Nuts</p>
-          <p onClick={getClickHandler("Meat")}>Meat</p>
-          <p onClick={getClickHandler("Fish")}>Fish</p>
-          <p onClick={getClickHandler("Dairy")}>Dairy</p>
-          <p onClick={getClickHandler("Leafly")}>Leafly</p>
-          <p onClick={getClickHandler("Dressing")}>Dressing</p>
-          <p onClick={getClickHandler("Oil")}>Oil</p>
-        </div>
-        <div className="search-bar-wrapper">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search..."
-            onChange={e => onChangeHandler(e)}
-          />
-        </div>
+      <div className="search-bar-wrapper">
+        <img src={require("../icons/Search.png")} />
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search"
+          onChange={e => onChangeHandler(e)}
+        />
       </div>
-      <div>
-        {currentList.length >= 1 ? (
-          <ul className="ingredient-item-list">
-            {currentList.map((item, i) => (
-              <li key={i} className="ingredient-item">
-                <p className="name">{item.name}</p>
-                <p className="value">
-                  <span>{item.protein}</span>gr protein
-                </p>
-                <p className="value">
-                  <span>{item.kcal}</span>kcal
-                </p>
-                <p className="value">
-                  <span>{item.carbs}</span>gr carbs
-                </p>
-                <p className="value">
-                  <span>{item.fats}</span>gr fats
-                </p>
-                <button onClick={() => toggleHandler(item)}>+</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div>
-            <p>Not finding what your looking for? Make the ingredient:</p>
-            <Link to="/ingredient/create">
-              <button>Create now!</button>
-            </Link>
-          </div>
-        )}
+      <div className="category-header">
+        <p onClick={getClickHandler("Vegetables")}>Vegetables</p>
+        <p onClick={getClickHandler("Fruits")}>Fruits</p>
+        <p onClick={getClickHandler("Grains")}>Grains</p>
+        <p onClick={getClickHandler("Beans")}>Beans</p>
+        <p onClick={getClickHandler("Nuts")}>Nuts</p>
+        <p onClick={getClickHandler("Meat")}>Meat</p>
+        <p onClick={getClickHandler("Fish")}>Fish</p>
+        <p onClick={getClickHandler("Dairy")}>Dairy</p>
+        <p onClick={getClickHandler("Leafly")}>Leafly</p>
+        <p onClick={getClickHandler("Dressing")}>Dressing</p>
+        <p onClick={getClickHandler("Oil")}>Oil</p>
       </div>
+
+      {currentList.length >= 1 ? (
+        <ul className="ingredient-item-list">
+          {currentList.map((item, i) => (
+            <li key={i} className="ingredient-item">
+              <div className="values-wrapper">
+                <div className="ingredient-header">
+                  <img src={require(`../icons/${item.category}.svg`)} />
+                  <p className="name">{item.name}</p>
+                </div>
+                <div className="nutrients-wrapper">
+                  <div className="value kcal">
+                    <img src={require("../icons/fire.png")} />
+                    <span>{item.kcal}</span>kcal
+                  </div>
+                  <div className="value protein">
+                    <img src={require("../icons/muscle.png")} />
+                    <span>{item.protein}</span>gr
+                  </div>
+                  <div className="value sugar">
+                    <img src={require("../icons/sweet.png")} />
+                    <span>{item.carbs}</span>gr
+                  </div>
+                  <div className="value oil">
+                    <img src={require("../icons/oil.png")} />
+                    <span>{item.fats}</span>gr
+                  </div>
+                </div>
+              </div>
+
+              <img className="add-icon"
+                onClick={() => toggleHandler(item)}
+                src={require("../icons/plus.png")}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>
+          <p>Not finding what your looking for? Make the ingredient:</p>
+          <Link to="/ingredient/create">
+            <button>Create now!</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
