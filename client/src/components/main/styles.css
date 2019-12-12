@@ -2,7 +2,8 @@
   background-color: none;
   display: flex;
   justify-content: space-between;
-  padding: 20px 15px;
+  align-items: center;
+  padding: 20px;
 }
 
 .header h1 {
@@ -12,6 +13,7 @@
 .menu-options button {
   margin: 0px 5px;
   padding: 10px 30px;
+  font-size: 14px;
   font-weight: 600;
   border: none;
   border-radius: 5px;

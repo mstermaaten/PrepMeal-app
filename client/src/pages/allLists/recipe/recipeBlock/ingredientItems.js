@@ -9,7 +9,7 @@ function List(props) {
         return (
           <img
             className="icon-ingredient"
-            src={require(`../icons/${ingredient.category}.svg`)}
+            src={require(`../../../../components/icons/${ingredient.category}.svg`)}
           />
         );
       })}

@@ -30,6 +30,9 @@ function Header(props) {
             <Link to="/profile">
               <button className="profile">Profie</button>
             </Link>
+            <Link to="/recipe">
+              <button className="profile">Recipes</button>
+            </Link>
 
             <button onClick={onClickHanler} className="profile">
               Logout

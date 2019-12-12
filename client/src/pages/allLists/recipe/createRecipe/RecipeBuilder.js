@@ -11,14 +11,14 @@ function RecipeBuilder(props) {
           <h5>
             Start building your recipe by selecting ingredients on the right!
           </h5>
-          <img src={require("../icons/arrow.gif")} />
+          <img src={require("../../../../components/icons/arrow.gif")} />
         </div>
       ) : (
         <ul className="ingredient-item-list">
           {items.map((item, i) => (
             <li key={i} className="add-ingredient-item">
               <div className="added-item-header">
-                <img src={require(`../icons/${item.category}.svg`)} />
+                <img src={require(`../../../../components/icons/${item.category}.svg`)} />
                 <div className="add-item-info">
                   <p className="name">{item.name}</p>
                   <p>
@@ -28,11 +28,11 @@ function RecipeBuilder(props) {
                 <div className="action-buttons">
                   <img
                     className="actions"
-                    src={require("../icons/pencil-edit-button.png")}
+                    src={require("../../../../components/icons/pencil-edit-button.png")}
                   />
                   <img
                     className="actions"
-                    src={require("../icons/trash.png")}
+                    src={require("../../../../components/icons/trash.png")}
                     onClick={() => removeHandler(item)}
                   />
                 </div>
@@ -40,19 +40,19 @@ function RecipeBuilder(props) {
               <div className="add-values-wrapper">
                 <div className="nutrients-wrapper">
                   <div className="value kcal">
-                    <img src={require("../icons/fire.png")} />
+                    <img src={require("../../../../components/icons/fire.png")} />
                     <span>{(item.kcal * item.portion).toFixed(2)}</span>kcal
                   </div>
                   <div className="value protein">
-                    <img src={require("../icons/muscle.png")} />
+                    <img src={require("../../../../components/icons/muscle.png")} />
                     <span>{(item.protein * item.portion).toFixed(2)}</span>gr
                   </div>
                   <div className="value sugar">
-                    <img src={require("../icons/sweet.png")} />
+                    <img src={require("../../../../components/icons/sweet.png")} />
                     <span>{(item.carbs * item.portion).toFixed(2)}</span>gr
                   </div>
                   <div className="value oil">
-                    <img src={require("../icons/oil.png")} />
+                    <img src={require("../../../../components/icons/oil.png")} />
                     <span>{(item.fats * item.portion).toFixed(2)}</span>gr
                   </div>
                 </div>

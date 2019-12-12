@@ -8,6 +8,19 @@ body {
   color: #2e2e2e;
 }
 
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: #777;
+}
+
 .clippath,
 .clippath-two {
   width: 100vw;
@@ -37,12 +50,7 @@ body {
 .landing {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    ),
-    url("./components/static/food-achtergrond.jpg");
-  background-size: cover;
+
   display: flex;
   justify-content: center;
   align-items: center;

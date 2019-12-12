@@ -30,30 +30,30 @@ function Portion(props) {
       <div className="values-wrapper">
         <div className="nutrients-wrapper">
           <div className="value kcal">
-            <img src={require("../icons/fire.png")} />
+            <img src={require("../../../../components/icons/fire.png")} />
             <span>{(item.kcal * portion).toFixed(2)}</span>kcal
           </div>
           <div className="value protein">
-            <img src={require("../icons/muscle.png")} />
+            <img src={require("../../../../components/icons/muscle.png")} />
             <span>{(item.protein * portion).toFixed(2)}</span>gr
           </div>
           <div className="value sugar">
-            <img src={require("../icons/sweet.png")} />
+            <img src={require("../../../../components/icons/sweet.png")} />
             <span>{(item.carbs * portion).toFixed(2)}</span>gr
           </div>
           <div className="value oil">
-            <img src={require("../icons/oil.png")} />
+            <img src={require("../../../../components/icons/oil.png")} />
             <span>{(item.fats * portion).toFixed(2)}</span>gr
           </div>
         </div>
       </div>
       <div className="portion-buttons">
         <img
-          src={require("../icons/remove.png")}
+          src={require("../../../../components/icons/remove.png")}
           onClick={() => toggleHandler()}
         />
         <img
-          src={require("../icons/plus.png")}
+          src={require("../../../../components/icons/plus.png")}
           onClick={() => addHandler({ ...item, portion })}
         />
       </div>

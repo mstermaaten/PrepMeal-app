@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./pages/landing";
-import Profile from "./pages/profile";
+import Profile from "./pages/profile/profile";
 import Login from "./pages/login";
 import Ingredients from "./pages/allLists/ingredient/ingredients";
 import CreateIngredient from "./pages/allLists/ingredient/createIngredient";
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-    <div className="clippath"></div>
+      <div className="clippath"></div>
       <div className="clippath-two"></div>
       <Header user={user} setUser={setUser} />
       <Switch>

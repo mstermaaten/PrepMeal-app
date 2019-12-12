@@ -27,21 +27,21 @@ function Values(props) {
         <div className="total-nutrients-wrapper">
           <div className="group">
             <div className="value kcal">
-              <img src={require("../icons/fire.png")} />
+              <img src={require("../../../../components/icons/fire.png")} />
               <span>{ingredientValues.kcal.toFixed(2)}</span>kcal
             </div>
             <div className="value protein">
-              <img src={require("../icons/muscle.png")} />
+              <img src={require("../../../../components/icons/muscle.png")} />
               <span>{ingredientValues.protein.toFixed(2)}</span>gr
             </div>
           </div>
           <div className="group">
             <div className="value sugar">
-              <img src={require("../icons/sweet.png")} />
+              <img src={require("../../../../components/icons/sweet.png")} />
               <span>{ingredientValues.carbs.toFixed(2)}</span>gr
             </div>
             <div className="value oil">
-              <img src={require("../icons/oil.png")} />
+              <img src={require("../../../../components/icons/oil.png")} />
               <span>{ingredientValues.fats.toFixed(2)}</span>gr
             </div>
           </div>
@@ -50,21 +50,21 @@ function Values(props) {
         <div className="total-nutrients-wrapper">
           <div className="group">
             <div className="value kcal">
-              <img src={require("../icons/fire.png")} />
+              <img src={require("../../../../components/icons/fire.png")} />
               <span>0.00</span>kcal
             </div>
             <div className="value protein">
-              <img src={require("../icons/muscle.png")} />
+              <img src={require("../../../../components/icons/muscle.png")} />
               <span>0.00</span>gr
             </div>
           </div>
           <div className="group">
             <div className="value sugar">
-              <img src={require("../icons/sweet.png")} />
+              <img src={require("../../../../components/icons/sweet.png")} />
               <span>0.00</span>gr
             </div>
             <div className="value oil">
-              <img src={require("../icons/oil.png")} />
+              <img src={require("../../../../components/icons/oil.png")} />
               <span>0.00</span>gr
             </div>
           </div>

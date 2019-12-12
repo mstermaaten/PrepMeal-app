@@ -94,10 +94,9 @@ function Builder(props) {
     setImageText("Loading image...");
     formData.append("image", image);
     try {
-      debugger;
       const url = await imageUploader.upload(formData);
       setImageFile(url);
-      setImageText("Image is uploading!");
+      setImageText("Image is uploaded!");
     } catch (err) {
       console.log(err);
     }
@@ -132,6 +131,8 @@ function Builder(props) {
     }
   };
 
+  
+
   console.log(items);
 
   return (
@@ -142,6 +143,7 @@ function Builder(props) {
             onChangeHandler={onChangeHandler}
             categoryToggle={categoryToggle}
             imageHandler={imageHandler}
+            submitHandler={submitHandler}
             imageText={imageText}
             breakfast={Breakfast}
             snack={Snack}
@@ -149,9 +151,6 @@ function Builder(props) {
             diner={Diner}
             dessert={Dessert}
           />
-          <button className="create" onClick={submitHandler}>
-            Create Now
-          </button>
         </div>
         <div className="middle">
           <RecipeBuilder items={items} removeHandler={removeHandler} />

@@ -44,11 +44,23 @@ function IngredientList(props) {
     }
   };
 
+  const onWheel = e => {
+    e.preventDefault();
+    var container = document.getElementById("category-header");
+    var containerScrollPosition = document.getElementById("category-header")
+      .scrollLeft;
+    container.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behaviour: "smooth" //if you want smooth scrolling
+    });
+  };
+
   return (
     <div className="builder-ingredient-add">
       <h2>Add ingredients:</h2>
       <div className="search-bar-wrapper">
-        <img src={require("../icons/Search.png")} />
+        <img src={require("../../../../components/icons/Search.png")} />
         <input
           type="text"
           className="search-bar"
@@ -56,7 +68,7 @@ function IngredientList(props) {
           onChange={e => onChangeHandler(e)}
         />
       </div>
-      <div className="category-header">
+      <div className="category-header" id="category-header" onWheel={onWheel}>
         <p onClick={getClickHandler("Vegetables")}>Vegetables</p>
         <p onClick={getClickHandler("Fruits")}>Fruits</p>
         <p onClick={getClickHandler("Grains")}>Grains</p>
@@ -81,24 +93,34 @@ function IngredientList(props) {
             <li key={i} className="ingredient-item">
               <div>
                 <div className="ingredient-header">
-                  <img src={require(`../icons/${item.category}.svg`)} />
+                  <img
+                    src={require(`../../../../components/icons/${item.category}.svg`)}
+                  />
                   <p className="name">{item.name}</p>
                 </div>
                 <div className="nutrients-wrapper">
                   <div className="value kcal">
-                    <img src={require("../icons/fire.png")} />
+                    <img
+                      src={require("../../../../components/icons/fire.png")}
+                    />
                     <span>{item.kcal}</span>kcal
                   </div>
                   <div className="value protein">
-                    <img src={require("../icons/muscle.png")} />
+                    <img
+                      src={require("../../../../components/icons/muscle.png")}
+                    />
                     <span>{item.protein}</span>gr
                   </div>
                   <div className="value sugar">
-                    <img src={require("../icons/sweet.png")} />
+                    <img
+                      src={require("../../../../components/icons/sweet.png")}
+                    />
                     <span>{item.carbs}</span>gr
                   </div>
                   <div className="value oil">
-                    <img src={require("../icons/oil.png")} />
+                    <img
+                      src={require("../../../../components/icons/oil.png")}
+                    />
                     <span>{item.fats}</span>gr
                   </div>
                 </div>
@@ -107,7 +129,7 @@ function IngredientList(props) {
               <img
                 className="add-icon"
                 onClick={() => toggleHandler(item)}
-                src={require("../icons/plus.png")}
+                src={require("../../../../components/icons/plus.png")}
               />
             </li>
           ))}
