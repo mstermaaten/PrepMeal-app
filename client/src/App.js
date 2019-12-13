@@ -11,6 +11,7 @@ import RecipesList from "./pages/allLists/recipe/recipesList";
 import Builder from "./pages/allLists/recipe/createRecipe/Builder";
 import AuthService from "../src/api/authService";
 import Header from "./components/main/Header";
+import DayplanBuilder from "./pages/allLists/dayplans/Builder";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,6 +52,7 @@ function App() {
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
         <Route exact path="/recipe" component={RecipesList} />
         <Route path="/recipe/create" component={Builder} />
+        <Route exact path="/dayplan" component={DayplanBuilder} />
       </Switch>
     </>
   );

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import IngredientList from "./ingredientList";
+import DayPlanService from "../../../api/dayPlanService";
+import AddInputs from "./addInputs";
 import RecipeBuilder from "./RecipeBuilder";
-import Values from "./Values";
-import Inputs from "./additionalValues";
-import DayPlanService from "../../../../api/DayPlanService";
+
 import "./styles.css";
 
 function Builder(props) {
@@ -39,7 +38,7 @@ function Builder(props) {
 
   const toggleHandler = item => {
     setToggle(!toggle);
-    setCurrentItem(item);
+    // setCurrentItem(item);
   };
 
   const errorHandler = message => {
@@ -73,30 +72,14 @@ function Builder(props) {
     }
   };
 
-  console.log(items);
-
   return (
     <div className="builder">
       <div className="builder-container">
-        <div className="split">
-          <h2>Create Your Recipe</h2>
-          <Inputs onChangeHandler={onChangeHandler} />
-          <div style={{ textAlign: "left", width: "90%" }}>
-            <h3>Meals:</h3>
-          </div>
-          <RecipeBuilder items={items} removeHandler={removeHandler} />
-          <Values
-            items={items}
-            ingredientValues={ingredientValues}
-            setRecipeValues={setRecipeValues}
-          />
-          <button className="create" onClick={submitHandler}>
-            Create Now
-          </button>
+        <div className="split-left-dayplan">
+          <AddInputs onChangeHandler={onChangeHandler} />
+          <RecipeBuilder />
         </div>
-        <div className="split">
-          <IngredientList toggleHandler={toggleHandler} addHandler={addHandler}/>
-        </div>
+        <div className="split-right-dayplan"></div>
       </div>
       {error && (
         <div className="error-container">

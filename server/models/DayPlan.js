@@ -34,12 +34,11 @@ const dayplanSchema = new Schema(
     ],
     recipes: [
       {
-        recipeId: [
+        recipeId: 
           {
             type: Schema.Types.ObjectId,
             ref: "Recipe"
-          }
-        ],
+          },
         meal: {
           type: String,
           enum: ["Breakfast", "Lunch", "Diner", "Snack", "Shake", "Rest"]

@@ -4,7 +4,7 @@ var router = express.Router();
 const DayPlan = require("../models/DayPlan");
 
 router.post("/create", async (req, res, next) => {
-  const { name, category, diet,planValues, storedList } = req.body;
+  const { name, category, diet, planValues, storedList } = req.body;
   const { _id: userId } = req.session.user;
 
   try {
@@ -50,7 +50,7 @@ router.get("/find/:id", async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const oneDayPlan = await DayPlan.findById({ id });
+    const oneDayPlan = await DayPlan.findById(id);
     res.status(200).json(oneDayPlan);
   } catch (err) {
     res.status(404).json({ message: "could not find this DayPlan" + err });

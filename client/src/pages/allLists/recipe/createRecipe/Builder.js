@@ -10,7 +10,7 @@ import ImageUploader from "../../../../api/imageUploadService";
 import CreateIngredient from "../../ingredient/createIngredient";
 import "./styles.css";
 
-function Builder(props) {
+function DayplanBuilder(props) {
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [description, setDescription] = useState(null);
@@ -131,8 +131,6 @@ function Builder(props) {
     }
   };
 
-  
-
   console.log(items);
 
   return (
@@ -191,4 +189,4 @@ function Builder(props) {
   );
 }
 
-export default withRouter(Builder);
+export default withRouter(DayplanBuilder);
