@@ -2,25 +2,53 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import DayPlanService from "../../../api/dayPlanService";
 import AddInputs from "./addInputs";
-import RecipeBuilder from "./RecipeBuilder";
+import DayPlanBuilder from "./RecipeBuilder";
+import ReviewList from "./ReviewList";
 
 import "./styles.css";
 
-function Builder(props) {
+function DayPlanPage(props) {
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [recipeValues, setRecipeValues] = useState({});
   const [diet, setDiet] = useState(null);
   const [items, setItems] = useState([]);
+  const [breakfastList, setBreakfastList] = useState([]);
+  const [lunchList, setLunchList] = useState([]);
+  const [dinerList, setDinerList] = useState([]);
+  const [snacksList, setSnacksList] = useState([]);
+  const [nutritionalValues, setNutritionalValues] = useState({});
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const dayplanService = new DayPlanService();
+  const mealMapper = ["Breakfast", "Lunch", "Diner", "Snacks"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  let meal = mealMapper[currentIndex];
+
+  const toggleMeal = action => {
+    if (currentIndex === 0 && action === "back") {
+      return;
+    } else if (mealMapper.length - 1 <= currentIndex && action === "next") {
+      return;
+    } else if (action === "next") {
+      setCurrentIndex(currentIndex + 1);
+    } else if (action === "back") {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
   const mapper = {
     name: setName,
     category: setCategory,
     diet: setDiet
+  };
+
+  const listMealMapper = {
+    Breakfast: setBreakfastList,
+    Lunch: setLunchList,
+    Diner: setDinerList,
+    Snacks: setSnacksList
   };
 
   const onChangeHandler = e => {
@@ -29,21 +57,14 @@ function Builder(props) {
 
   const addHandler = newItem => {
     setItems([...items, newItem]);
-    setToggle(false);
+    let category = newItem.category;
+    listMealMapper[category]([...items, newItem]);
   };
 
   const removeHandler = oldItem => {
     setItems(items.filter(i => i._id !== oldItem._id));
-  };
-
-  const toggleHandler = item => {
-    setToggle(!toggle);
-    // setCurrentItem(item);
-  };
-
-  const errorHandler = message => {
-    setError(!error);
-    setErrorMessage(message);
+    let category = oldItem.category;
+    listMealMapper[category](items.filter(i => i._id !== oldItem._id));
   };
 
   const submitHandler = async () => {
@@ -72,14 +93,41 @@ function Builder(props) {
     }
   };
 
+  const toggleHandler = item => {
+    setToggle(!toggle);
+    // setCurrentItem(item);
+  };
+
+  const errorHandler = message => {
+    setError(!error);
+    setErrorMessage(message);
+  };
+
   return (
     <div className="builder">
       <div className="builder-container">
         <div className="split-left-dayplan">
           <AddInputs onChangeHandler={onChangeHandler} />
-          <RecipeBuilder />
+          <DayPlanBuilder
+            items={items}
+            removeHandler={removeHandler}
+            toggleMeal={toggleMeal}
+            meal={meal}
+            addHandler={addHandler}
+          />
         </div>
-        <div className="split-right-dayplan"></div>
+        <div className="split-right-dayplan">
+          <ReviewList
+            items={items}
+            breakfastList={breakfastList}
+            lunchList={lunchList}
+            dinerList={dinerList}
+            snacksList={snacksList}
+            removeHandler={removeHandler}
+            setNutritionalValues={setNutritionalValues}
+            nutritionalValues={setNutritionalValues}
+          />
+        </div>
       </div>
       {error && (
         <div className="error-container">
@@ -92,4 +140,4 @@ function Builder(props) {
   );
 }
 
-export default withRouter(Builder);
+export default withRouter(DayPlanPage);

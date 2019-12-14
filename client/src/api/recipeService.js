@@ -8,6 +8,30 @@ export default class RecipeService {
     });
   }
 
+  getByFilter = async filter => {
+    try {
+      const { data: Ingredients } = await this.service.get(
+        "/recipe/filter/" + filter
+      );
+      return Ingredients;
+    } catch (err) {
+      console.log("error getting ingredient" + err);
+      return err;
+    }
+  };
+
+  getByCategory = async category => {
+    try {
+      const { data: Ingredients } = await this.service.get(
+        "/recipe/category/" + category
+      );
+      return Ingredients;
+    } catch (err) {
+      console.log("error getting ingredient" + err);
+      return err;
+    }
+  };
+
   getOne = async id => {
     try {
       const { data: oneRecipe } = await this.service.get("/recipe/find/" + id);

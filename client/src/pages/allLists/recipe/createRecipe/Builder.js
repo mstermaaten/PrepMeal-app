@@ -10,7 +10,7 @@ import ImageUploader from "../../../../api/imageUploadService";
 import CreateIngredient from "../../ingredient/createIngredient";
 import "./styles.css";
 
-function DayplanBuilder(props) {
+function RecipePage(props) {
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [description, setDescription] = useState(null);
@@ -189,4 +189,4 @@ function DayplanBuilder(props) {
   );
 }
 
-export default withRouter(DayplanBuilder);
+export default withRouter(RecipePage);

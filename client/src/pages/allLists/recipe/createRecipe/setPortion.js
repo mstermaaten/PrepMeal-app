@@ -31,7 +31,7 @@ function Portion(props) {
         <div className="nutrients-wrapper">
           <div className="value kcal">
             <img src={require("../../../../components/icons/fire.png")} />
-            <span>{(item.kcal * portion).toFixed(2)}</span>kcal
+            <span>{(item.kcal * portion).toFixed(0)}</span>kcal
           </div>
           <div className="value protein">
             <img src={require("../../../../components/icons/muscle.png")} />

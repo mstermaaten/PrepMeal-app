@@ -28,7 +28,7 @@ function Values(props) {
           <div className="group">
             <div className="value kcal">
               <img src={require("../../../../components/icons/fire.png")} />
-              <span>{ingredientValues.kcal.toFixed(2)}</span>kcal
+              <span>{ingredientValues.kcal.toFixed(0)}</span>kcal
             </div>
             <div className="value protein">
               <img src={require("../../../../components/icons/muscle.png")} />

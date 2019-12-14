@@ -117,7 +117,7 @@ router.get("/filter/:input", async (req, res, next) => {
   try {
     const { input } = req.params;
     const recipe = await Recipe.find({
-      name: new RegExp(input, "i")
+      diet: new RegExp(input, "i")
     });
     res.status(200).json(recipe);
   } catch (err) {

@@ -18,7 +18,9 @@ function RecipeBuilder(props) {
           {items.map((item, i) => (
             <li key={i} className="add-ingredient-item">
               <div className="added-item-header">
-                <img src={require(`../../../../components/icons/${item.category}.svg`)} />
+                <img
+                  src={require(`../../../../components/icons/${item.category}.svg`)}
+                />
                 <div className="add-item-info">
                   <p className="name">{item.name}</p>
                   <p>
@@ -40,19 +42,27 @@ function RecipeBuilder(props) {
               <div className="add-values-wrapper">
                 <div className="nutrients-wrapper">
                   <div className="value kcal">
-                    <img src={require("../../../../components/icons/fire.png")} />
-                    <span>{(item.kcal * item.portion).toFixed(2)}</span>kcal
+                    <img
+                      src={require("../../../../components/icons/fire.png")}
+                    />
+                    <span>{(item.kcal * item.portion).toFixed(0)}</span>kcal
                   </div>
                   <div className="value protein">
-                    <img src={require("../../../../components/icons/muscle.png")} />
+                    <img
+                      src={require("../../../../components/icons/muscle.png")}
+                    />
                     <span>{(item.protein * item.portion).toFixed(2)}</span>gr
                   </div>
                   <div className="value sugar">
-                    <img src={require("../../../../components/icons/sweet.png")} />
+                    <img
+                      src={require("../../../../components/icons/sweet.png")}
+                    />
                     <span>{(item.carbs * item.portion).toFixed(2)}</span>gr
                   </div>
                   <div className="value oil">
-                    <img src={require("../../../../components/icons/oil.png")} />
+                    <img
+                      src={require("../../../../components/icons/oil.png")}
+                    />
                     <span>{(item.fats * item.portion).toFixed(2)}</span>gr
                   </div>
                 </div>

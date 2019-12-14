@@ -33,6 +33,15 @@ display: flex;
   align-items: center;
 */
 
+.duration {
+  width: 100%;
+  text-align: left;
+  color: #3ec1d3;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px 0px;
+}
+
 .input-wrapper-dayplan {
   width: 100%;
   display: flex;
@@ -78,4 +87,69 @@ display: flex;
 
 .split-right-dayplan {
   width: 30%;
+}
+
+.dayplan-builder-wrapper h1,
+.dayplan-builder-wrapper h2,
+.dayplan-builder-wrapper h4 {
+  margin: 5px 0px;
+}
+
+.dayplan-builder-wrapper {
+  height: 75vh;
+  max-height: 75vh;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation-buttons {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-item {
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value.recipe-value {
+  width: 22%;
+}
+
+.recipe-nutrients {
+  justify-content: space-between;
+}
+
+.full-page {
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  top: 70px;
+  left: 0;
+}
+
+.recipe-list {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review-list-wrapper {
+  height: 100%;
+}
+
+.review-list {
+  width: 100%;
+  min-height: 18%;
+  max-height: 18%;
 }
