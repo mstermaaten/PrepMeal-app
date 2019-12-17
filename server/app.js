@@ -22,7 +22,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
+  .connect(
+    "mongodb+srv://mstermaaten:zEwfV5CdUWofBtxt@cannabis-sju98.mongodb.net/test?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
   .then(() => {
     console.log("mongo connected");
   })
