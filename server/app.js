@@ -23,7 +23,7 @@ const cors = require("cors");
 
 mongoose
   .connect(
-    "mongodb+srv://mstermaaten:ygFxZzlEfwObcdnC@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://mstermaaten:DCMyZAnL3ENsVZ7w@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority",
 
     { useNewUrlParser: true }
   )
