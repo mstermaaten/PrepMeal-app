@@ -8,6 +8,11 @@ export default class AuthService {
     });
   }
 
+  register = async payload => {
+    const { data } = await this.service.post("/auth/register", payload);
+    return data;
+  };
+
   login = async payload => {
     const { data } = await this.service.post("/auth/login", payload);
     return data;

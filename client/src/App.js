@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Landing from "./pages/landing";
 import Profile from "./pages/profile/profile";
 import Login from "./pages/login";
+import Register from "./pages/Register";
 import Ingredients from "./pages/allLists/ingredient/ingredients";
 import CreateIngredient from "./pages/allLists/ingredient/createIngredient";
 import UpdateIngredient from "./pages/allLists/ingredient/updateIngredient";
@@ -45,6 +46,12 @@ function App() {
         <Route
           path="/login"
           render={props => <Login user={user} {...props} setUser={setUser} />}
+        />
+        <Route
+          path="/register"
+          render={props => (
+            <Register user={user} {...props} setUser={setUser} />
+          )}
         />
         <Route
           path="/profile"
