@@ -40,14 +40,14 @@ export default class dayplanService {
     }
   };
 
-  create = async (name, category, diet, planValues, storedList) => {
+  create = async (name, category, diet, ingredientValues, storedList) => {
     try {
       debugger;
       const { data } = await this.service.post("/dayplan/create", {
         name,
         category,
         diet,
-        planValues,
+        ingredientValues,
         storedList
       });
       return data;

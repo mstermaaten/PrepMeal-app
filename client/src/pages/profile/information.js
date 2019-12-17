@@ -25,12 +25,18 @@ function UserInformation(props) {
             <p className="follow-p">Followers</p>
             <div className="follow-number">
               <p>{user.followers.length}</p>
-              <img src={require("../../components/icons/image-plus.png")} />
+              <img
+                alt=""
+                src={require("../../components/icons/image-plus.png")}
+              />
             </div>
             <p className="follow-p">Following</p>
             <div className="follow-number">
               <p>{user.following.length}</p>
-              <img src={require("../../components/icons/image-plus.png")} />
+              <img
+                alt=""
+                src={require("../../components/icons/image-plus.png")}
+              />
             </div>
           </div>
         </div>

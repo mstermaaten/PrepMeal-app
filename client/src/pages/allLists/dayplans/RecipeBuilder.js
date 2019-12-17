@@ -16,12 +16,12 @@ function DayPlanBuilder(props) {
         const likedList = await recipeService.getAllLikedRecipes();
         let FullList = createdList.concat(likedList);
         setFullList(FullList);
-        console.log(FullList);
       } catch (err) {
         console.log(err);
       }
     };
     run();
+    settingMealList();
   }, []);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ function DayPlanBuilder(props) {
       <div className="builder-ingredient-add">
         <h2>Add Recipes:</h2>
         <div className="search-bar-wrapper">
-          <img src={require("../../../components/icons/Search.png")} />
+          <img alt="" src={require("../../../components/icons/Search.png")} />
           <input
             type="text"
             className="search-bar"
@@ -98,7 +98,7 @@ function DayPlanBuilder(props) {
           <p onClick={getClickHandler("Rest")}>Rest</p>
         </div>
 
-        {currentList.length >= 1 ? (
+        {currentList.length > 0 ? (
           <ul className="ingredient-item-list recipe-list">
             {currentList.map((item, i) => (
               <li key={i} className="ingredient-item shadow recipe-item">
@@ -113,7 +113,10 @@ function DayPlanBuilder(props) {
                 <h5 className="duration">Duration: {item.time}</h5>
                 <div className="nutrients-wrapper recipe-nutrients">
                   <div className="value kcal recipe-value">
-                    <img src={require("../../../components/icons/fire.png")} />
+                    <img
+                      alt=""
+                      src={require("../../../components/icons/fire.png")}
+                    />
                     <span>{item.nutrients.kcal.toFixed(0)}</span>kcal
                   </div>
                   <div className="value protein recipe-value">
@@ -123,11 +126,17 @@ function DayPlanBuilder(props) {
                     <span>{item.nutrients.protein.toFixed(0)}</span>gr
                   </div>
                   <div className="value sugar recipe-value">
-                    <img src={require("../../../components/icons/sweet.png")} />
+                    <img
+                      alt=""
+                      src={require("../../../components/icons/sweet.png")}
+                    />
                     <span>{item.nutrients.carbs.toFixed(0)}</span>gr
                   </div>
                   <div className="value oil recipe-value">
-                    <img src={require("../../../components/icons/oil.png")} />
+                    <img
+                      alt=""
+                      src={require("../../../components/icons/oil.png")}
+                    />
                     <span>{item.nutrients.fats.toFixed(0)}</span>gr
                   </div>
                 </div>
@@ -135,16 +144,20 @@ function DayPlanBuilder(props) {
             ))}
           </ul>
         ) : (
-          <div>
-            <p>Not finding what your looking for? Make the recipe:</p>
+          <div className="not-finding-message">
+            <p>Not finding what your looking for?</p>
 
             <button className="create-button">Save and make recipe!</button>
           </div>
         )}
       </div>
       <div className="navigation-buttons">
-        <p onClick={() => toggleMeal("back")}>Back</p>
-        <p onClick={() => toggleMeal("next")}>Next</p>
+        <p className="shadow-hover" onClick={() => toggleMeal("back")}>
+          Back
+        </p>
+        <p className="shadow-hover" onClick={() => toggleMeal("next")}>
+          Next
+        </p>
       </div>
     </div>
   );

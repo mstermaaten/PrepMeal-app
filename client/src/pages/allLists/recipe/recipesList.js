@@ -42,9 +42,21 @@ const RecipesList = props => {
     setLiked("showResult");
   };
 
+  const onWheel = e => {
+    e.preventDefault();
+    var container = document.getElementById("category-header");
+    var containerScrollPosition = document.getElementById("category-header")
+      .scrollLeft;
+    container.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behaviour: "smooth" //if you want smooth scrolling
+    });
+  };
+
   const CreatedList = () => {
     return (
-      <div className="parent">
+      <div className="parent" id="category-header" onWheel={onWheel}>
         {createdRecipes.map((recipe, i) => {
           return <Values key={i} recipe={recipe} />;
         })}
@@ -56,14 +68,10 @@ const RecipesList = props => {
     <div className="created-container">
       <h1>Recipes</h1>
       <div className="list-container">
-        <Link to="/recipe/create">
-          <button>Create new recipe</button>
+        <Link to="/recipe/create" className="link-style">
+          <p className="click-button shadow-hover">Create new recipe</p>
         </Link>
         <div>
-          <div>
-            <button onClick={onClickCreated}>Created Recipes</button>
-            <button onClick={onClickLiked}>Liked Recipes</button>
-          </div>
           <h2>Created Recipes:</h2>
           <>{!createdRecipes ? <h1>Loading</h1> : <CreatedList />}</>
         </div>

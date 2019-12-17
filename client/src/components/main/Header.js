@@ -22,16 +22,24 @@ function Header(props) {
   return (
     <div className="header">
       <div className="logo">
-        <h1>LOGO</h1>
+        <Link to="/profile">
+          <img alt="" src={require("../icons/logo-blue.png")} />
+        </Link>
       </div>
       <div className="menu-options">
         {user ? (
           <>
-            <Link to="/profile">
-              <button className="profile">Profie</button>
+            <Link to="/explore">
+              <button className="profile">Explore</button>
             </Link>
             <Link to="/recipe">
               <button className="profile">Recipes</button>
+            </Link>
+            <Link to="/dayplan">
+              <button className="profile">Dayplans</button>
+            </Link>
+            <Link to="/profile">
+              <button className="profile">Profie</button>
             </Link>
 
             <button onClick={onClickHanler} className="profile">

@@ -17,7 +17,7 @@ function DayPlanPage(props) {
   const [lunchList, setLunchList] = useState([]);
   const [dinerList, setDinerList] = useState([]);
   const [snacksList, setSnacksList] = useState([]);
-  const [nutritionalValues, setNutritionalValues] = useState({});
+  const [ingredientValues, setValuesIngredient] = useState({});
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -58,13 +58,15 @@ function DayPlanPage(props) {
   const addHandler = newItem => {
     setItems([...items, newItem]);
     let category = newItem.category;
-    listMealMapper[category]([...items, newItem]);
+    listMealMapper[category](old => [...old, newItem]);
   };
 
   const removeHandler = oldItem => {
     setItems(items.filter(i => i._id !== oldItem._id));
     let category = oldItem.category;
-    listMealMapper[category](items.filter(i => i._id !== oldItem._id));
+    listMealMapper[category](current =>
+      current.filter(i => i._id !== oldItem._id)
+    );
   };
 
   const submitHandler = async () => {
@@ -83,7 +85,7 @@ function DayPlanPage(props) {
         name,
         category,
         diet,
-        recipeValues,
+        ingredientValues,
         storedList
       );
       props.history.push("/recipe");
@@ -124,8 +126,9 @@ function DayPlanPage(props) {
             dinerList={dinerList}
             snacksList={snacksList}
             removeHandler={removeHandler}
-            setNutritionalValues={setNutritionalValues}
-            nutritionalValues={setNutritionalValues}
+            setValuesIngredient={setValuesIngredient}
+            ingredientValues={ingredientValues}
+            submitHandler={submitHandler}
           />
         </div>
       </div>

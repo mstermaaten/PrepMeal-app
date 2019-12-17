@@ -43,21 +43,21 @@ function Values(props) {
             <div className="total-nutrients-wrapper">
               <div className="group">
                 <div className="value kcal">
-                  <img src={require("../../../../components/icons/fire.png")} />
+                  <img alt="" src={require("../../../../components/icons/fire.png")} />
                   <span>{nutrients.kcal.toFixed(2)}</span>kcal
                 </div>
                 <div className="value protein">
-                  <img src={require("../../../../components/icons/muscle.png")} />
+                  <img alt="" src={require("../../../../components/icons/muscle.png")} />
                   <span>{nutrients.protein.toFixed(2)}</span>gr
                 </div>
               </div>
               <div className="group">
                 <div className="value sugar">
-                  <img src={require("../../../../components/icons/sweet.png")} />
+                  <img alt="" src={require("../../../../components/icons/sweet.png")} />
                   <span>{nutrients.carbs.toFixed(2)}</span>gr
                 </div>
                 <div className="value oil">
-                  <img src={require("../../../../components/icons/oil.png")} />
+                  <img alt="" src={require("../../../../components/icons/oil.png")} />
                   <span>{nutrients.fats.toFixed(2)}</span>gr
                 </div>
               </div>

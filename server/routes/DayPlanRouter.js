@@ -4,7 +4,7 @@ var router = express.Router();
 const DayPlan = require("../models/DayPlan");
 
 router.post("/create", async (req, res, next) => {
-  const { name, category, diet, planValues, storedList } = req.body;
+  const { name, category, diet, ingredientValues, storedList } = req.body;
   const { _id: userId } = req.session.user;
 
   try {
@@ -12,7 +12,7 @@ router.post("/create", async (req, res, next) => {
       name,
       category,
       diet,
-      nutrients: planValues,
+      nutrients: ingredientValues,
       createdBy: userId,
       likes: [],
       meals: [...storedList]

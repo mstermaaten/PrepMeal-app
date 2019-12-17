@@ -18,6 +18,7 @@ box-shadow: -5px 5px 18px -4px rgba(204,204,204,1);
 */
 
 /* 
+background-color: white;
   padding: 5px;
   margin: 5px 0px;
   border-radius: 7px;
@@ -47,6 +48,7 @@ display: flex;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .group-dayplan {
@@ -61,17 +63,19 @@ display: flex;
   -webkit-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
   -moz-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
   box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
-  padding: 10px;
+  padding: 15px 10px;
   border-radius: 7px;
   width: 70%;
+  font-size: 14px;
 }
 
 .input-wrapper-dayplan select {
   border-style: none;
   background: white;
-  height: 33px;
+  height: 47px;
   border-radius: 7px;
   width: 70%;
+  font-size: 14px;
 }
 
 .input-wrapper-dayplan label {
@@ -89,9 +93,9 @@ display: flex;
   width: 30%;
 }
 
-.dayplan-builder-wrapper h1,
-.dayplan-builder-wrapper h2,
-.dayplan-builder-wrapper h4 {
+.builder-container h1,
+.builder-container h2,
+.builder-container h4 {
   margin: 5px 0px;
 }
 
@@ -113,10 +117,13 @@ display: flex;
 }
 
 .recipe-item {
-  width: 46%;
+  min-width: 46%;
+  max-width: 46%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  margin: 10px 0px;
 }
 
 .value.recipe-value {
@@ -125,6 +132,11 @@ display: flex;
 
 .recipe-nutrients {
   justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.recipe-nutrients h4 {
+  min-width: 50%;
 }
 
 .full-page {
@@ -140,16 +152,85 @@ display: flex;
 }
 
 .recipe-list {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .review-list-wrapper {
   height: 100%;
+  padding: 20px 0px;
+  position: relative;
 }
 
 .review-list {
-  width: 100%;
+  width: 90%;
+  height: 18%;
   min-height: 18%;
   max-height: 18%;
+}
+
+.review-list h4 {
+  color: #3ec1d3;
+}
+
+.not-finding-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-finding-message button {
+  margin: 5px auto;
+}
+
+.add-icon {
+  cursor: pointer;
+}
+
+.full-review-list {
+  width: 100%;
+}
+
+.navigation-buttons p {
+  background-color: #3ec1d3;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  margin: 5px 0px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.create-now {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #3ec1d3;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 7px 0px 7px 0px;
+  cursor: pointer;
+}
+
+.review-list-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  min-height: 45%;
+  max-height: 45%;
+  font-weight: 600;
+  margin: 2px 0px;
+}
+
+.dayplan-list-item-wrapper {
+  min-width: 22%;
+  max-width: 22%;
+  justify-content: space-between;
 }

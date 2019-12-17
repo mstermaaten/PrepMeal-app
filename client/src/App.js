@@ -12,6 +12,9 @@ import RecipePage from "./pages/allLists/recipe/createRecipe/Builder";
 import AuthService from "../src/api/authService";
 import Header from "./components/main/Header";
 import DayPlanPage from "./pages/allLists/dayplans/Builder";
+import DaylanList from "./pages/allLists/dayplans/show/Dayplans";
+import Explore from "./pages/explore/Explore";
+import AllUsersPage from "./pages/explore/AllUsersPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,7 +55,10 @@ function App() {
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
         <Route exact path="/recipe" component={RecipesList} />
         <Route path="/recipe/create" component={RecipePage} />
-        <Route exact path="/dayplan" component={DayPlanPage} />
+        <Route exact path="/dayplan" component={DaylanList} />
+        <Route path="/dayplan/create" component={DayPlanPage} />
+        <Route exact path="/explore" component={Explore} />
+        <Route path="/explore/users" component={AllUsersPage} />
       </Switch>
     </>
   );

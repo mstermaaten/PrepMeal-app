@@ -7,6 +7,7 @@ select:focus {
 body {
   font-family: "Montserrat", sans-serif;
   color: #2e2e2e;
+  padding: 0px 20px;
 }
 
 p {
@@ -96,6 +97,60 @@ p {
   box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
 }
 
+.shadow-hover {
+  -webkit-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  -moz-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
+  transition: 0.2s;
+}
+
+.shadow-hover:hover {
+  -webkit-box-shadow: -5px 5px 18px -4px rgba(158, 155, 158, 1);
+  -moz-box-shadow: -5px 5px 18px -4px rgba(158, 155, 158, 1);
+  box-shadow: -5px 5px 18px -4px rgba(158, 155, 158, 1);
+}
+
+.box {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 0px;
+  border-radius: 7px;
+}
+
 .exit {
   background-color: tomato;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.click-button {
+  background-color: #3ec1d3;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 15px;
+  margin: 5px 0px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: white;
+  max-width: 200px;
+  text-align: center;
+}
+
+.link-style {
+  text-decoration: none;
+}
+
+.img-action {
+  width: 30px;
+  height: 30px;
 }

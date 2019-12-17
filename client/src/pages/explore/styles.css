@@ -1,0 +1,53 @@
+.explore-all-users-wrapper {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.usercard-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-foto,
+.user-info {
+  margin: 0px 10px;
+}
+
+.user-card-info {
+  min-width: 330px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.user-search-button-box {
+  width: 1240px;
+  max-width: 1240px;
+  margin: 10px 0px 30px 0px;
+}
+
+.see-profile img {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+}
+
+.split-top {
+  margin: auto;
+}
+
+.user-search {
+  width: 40%;
+}
+
+.user-button {
+  max-width: 100px;
+  justify-content: space-between;
+}

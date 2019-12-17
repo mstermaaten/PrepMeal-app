@@ -11,7 +11,7 @@ function RecipeBuilder(props) {
           <h5>
             Start building your recipe by selecting ingredients on the right!
           </h5>
-          <img src={require("../../../../components/icons/arrow.gif")} />
+          <img alt="" src={require("../../../../components/icons/arrow.gif")} />
         </div>
       ) : (
         <ul className="ingredient-item-list">

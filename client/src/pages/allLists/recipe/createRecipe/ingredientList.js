@@ -60,7 +60,7 @@ function IngredientList(props) {
     <div className="builder-ingredient-add">
       <h2>Add ingredients:</h2>
       <div className="search-bar-wrapper">
-        <img src={require("../../../../components/icons/Search.png")} />
+        <img alt="" src={require("../../../../components/icons/Search.png")} />
         <input
           type="text"
           className="search-bar"

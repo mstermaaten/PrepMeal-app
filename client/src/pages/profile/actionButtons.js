@@ -6,7 +6,7 @@ function ActionButtons() {
     <div className="buttons-wrapper">
       <div className="button">
         <div className="button-split-left">
-          <img src={require("../../components/icons/settings.png")} />
+          <img alt="" src={require("../../components/icons/settings.png")} />
           <p>Edit profile information</p>
         </div>
       </div>
@@ -22,24 +22,30 @@ function ActionButtons() {
             />
             <p>Create new recipe</p>
           </div>
-          <img src={require("../../components/icons/image-plus.png")} />
+          <img alt="" src={require("../../components/icons/image-plus.png")} />
+        </div>
+      </Link>
+      <Link
+        className="link"
+        style={{ textDecoration: "none", width: "100%" }}
+        to="/dayplan"
+      >
+        <div className="button">
+          <div className="button-split-left">
+            <img
+              src={require("../../components/icons/clock-circular-outline.png")}
+            />
+            <p>Create new dayplan</p>
+          </div>
+          <img alt="" src={require("../../components/icons/image-plus.png")} />
         </div>
       </Link>
       <div className="button">
         <div className="button-split-left">
-          <img
-            src={require("../../components/icons/clock-circular-outline.png")}
-          />
-          <p>Create new dayplan</p>
-        </div>
-        <img src={require("../../components/icons/image-plus.png")} />
-      </div>
-      <div className="button">
-        <div className="button-split-left">
-          <img src={require("../../components/icons/calendar.png")} />
+          <img alt="" src={require("../../components/icons/calendar.png")} />
           <p>Create new weekplan</p>
         </div>
-        <img src={require("../../components/icons/image-plus.png")} />
+        <img alt="" src={require("../../components/icons/image-plus.png")} />
       </div>
     </div>
   );

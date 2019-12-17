@@ -63,7 +63,7 @@ function Inputs(props) {
             >
               Breakfast
             </p>
-            <p className={snack} onClick={() => categoryToggle("Snack")}>
+            <p className={snack} onClick={() => categoryToggle("Snacks")}>
               Snack
             </p>
             <p className={lunch} onClick={() => categoryToggle("Lunch")}>
@@ -90,7 +90,7 @@ function Inputs(props) {
               src={require("../../../../components/icons/photo-camera.png")}
             />
             <p>{props.imageText}</p>
-            <img src={require("../../../../components/icons/image-plus.png")} />
+            <img alt="" src={require("../../../../components/icons/image-plus.png")} />
           </label>
         </div>
         <div className="input-wrapper">

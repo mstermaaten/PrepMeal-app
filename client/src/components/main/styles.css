@@ -3,11 +3,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .header h1 {
   margin: 0;
+}
+
+.logo img {
+  height: 70px;
+  width: inherit;
 }
 
 .menu-options button {

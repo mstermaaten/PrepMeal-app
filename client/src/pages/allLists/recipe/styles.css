@@ -14,6 +14,10 @@
   width: 95%;
 }
 
+.parent::-webkit-scrollbar {
+  display: none;
+}
+
 .parent {
   display: flex;
   width: 100%;
