@@ -23,7 +23,8 @@ const cors = require("cors");
 
 mongoose
   .connect(
-    "mongodb+srv://mstermaaten:zEwfV5CdUWofBtxt@cannabis-sju98.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://mstermaaten:ygFxZzlEfwObcdnC@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority",
+
     { useNewUrlParser: true }
   )
   .then(() => {
