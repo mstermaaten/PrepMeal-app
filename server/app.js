@@ -21,18 +21,28 @@ const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-mongoose
-  .connect(
-    "mongodb+srv://mstermaaten:DCMyZAnL3ENsVZ7w@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority",
+const MongoClient = require("mongodb").MongoClient;
+const uri =
+  "mongodb+srv://mstermaaten:DCMyZAnL3ENsVZ7w@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
-    { useNewUrlParser: true }
-  )
-  .then(() => {
-    console.log("mongo connected");
-  })
-  .catch(err => {
-    console.log("mongoose error" + err);
-  });
+// mongoose
+//   .connect(
+//     "mongodb+srv://mstermaaten:DCMyZAnL3ENsVZ7w@cluster0-apx5i.mongodb.net/test?retryWrites=true&w=majority",
+
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => {
+//     console.log("mongo connected");
+//   })
+//   .catch(err => {
+//     console.log("mongoose error" + err);
+//   });
 
 // setup sessions
 app.use(
