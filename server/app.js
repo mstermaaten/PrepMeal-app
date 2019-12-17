@@ -22,7 +22,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 mongoose
-  .connect("mongodb://localhost:27017/myapp", { useNewUrlParser: true })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(() => {
     console.log("mongo connected");
   })
