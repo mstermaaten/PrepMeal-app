@@ -90,7 +90,10 @@ function Inputs(props) {
               src={require("../../../../components/icons/photo-camera.png")}
             />
             <p>{props.imageText}</p>
-            <img alt="" src={require("../../../../components/icons/image-plus.png")} />
+            <img
+              alt=""
+              src={require("../../../../components/icons/image-plus.png")}
+            />
           </label>
         </div>
         <div className="input-wrapper">
@@ -103,7 +106,7 @@ function Inputs(props) {
           />
         </div>
       </div>
-      <button className="create" onClick={() => submitHandler()}>
+      <button className="create shadow-hover" onClick={() => submitHandler()}>
         Create Now
       </button>
     </div>

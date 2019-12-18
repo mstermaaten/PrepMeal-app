@@ -19,7 +19,6 @@ const RecipesList = props => {
   useEffect(() => {
     const getRecipes = async () => {
       try {
-        debugger;
         const recipesResult = await recipeService.getAllCreatedRecipes();
         setCreatedRecipes(recipesResult);
         console.log(recipesResult);

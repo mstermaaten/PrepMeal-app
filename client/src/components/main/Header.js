@@ -30,19 +30,19 @@ function Header(props) {
         {user ? (
           <>
             <Link to="/explore">
-              <button className="profile">Explore</button>
+              <button className="profile shadow-hover">Explore</button>
             </Link>
             <Link to="/recipe">
-              <button className="profile">Recipes</button>
+              <button className="profile shadow-hover">Recipes</button>
             </Link>
             <Link to="/dayplan">
-              <button className="profile">Dayplans</button>
+              <button className="profile shadow-hover">Dayplans</button>
             </Link>
             <Link to="/profile">
-              <button className="profile">Profie</button>
+              <button className="profile shadow-hover">Profile</button>
             </Link>
 
-            <button onClick={onClickHanler} className="profile">
+            <button onClick={onClickHanler} className="profile shadow-hover">
               Logout
             </button>
           </>

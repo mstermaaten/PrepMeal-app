@@ -57,4 +57,15 @@ router.get("/isLoggedIn", (req, res, next) => {
   }
 });
 
+router.get("/current", async (req, res, next) => {
+  const userID = req.session.user._id;
+
+  try {
+    const currentUser = await User.findById(userID);
+    res.status(200).json(currentUser);
+  } catch (err) {
+    res.status(404).json({ message: "oeps no session yet" });
+  }
+});
+
 module.exports = router;

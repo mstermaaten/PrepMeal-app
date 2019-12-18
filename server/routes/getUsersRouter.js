@@ -4,8 +4,9 @@ const User = require("../models/User");
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
+  const userID = req.session.user._id;
   try {
-    const allUsers = await User.find();
+    const allUsers = await User.find({ _id: { $ne: userID } });
     res.status(200).json(allUsers);
   } catch (err) {
     res
@@ -15,8 +16,10 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/limit", async (req, res, next) => {
+  const userID = req.session.user._id;
   try {
-    const allUsers = await User.find().limit(6);
+    debugger;
+    const allUsers = await User.find({ _id: { $ne: userID } }).limit(6);
     res.status(200).json(allUsers);
   } catch (err) {
     res

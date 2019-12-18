@@ -32,4 +32,9 @@ export default class AuthService {
     const { data } = await this.service.get("/auth/logout");
     return data;
   };
+
+  getCurrent = async () => {
+    const { data } = await this.service.get("/auth/current");
+    return data;
+  };
 }

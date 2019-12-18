@@ -113,7 +113,6 @@ function RecipePage(props) {
     });
 
     try {
-      debugger;
       const createRecipe = await recipeService.create(
         name,
         category,

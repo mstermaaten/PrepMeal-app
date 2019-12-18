@@ -1,6 +1,7 @@
 textarea:focus,
 input:focus,
-select:focus {
+select:focus,
+button:focus {
   outline: none;
 }
 
@@ -102,6 +103,7 @@ p {
   -moz-box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
   box-shadow: -5px 5px 18px -4px rgba(204, 204, 204, 1);
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .shadow-hover:hover {
@@ -153,4 +155,42 @@ p {
 .img-action {
   width: 30px;
   height: 30px;
+}
+
+.max {
+  max-width: 1240px;
+  display: block;
+  margin: auto;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+}
+
+.full {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.split-2 {
+  width: 45%;
+  min-width: 45%;
+  max-width: 45%;
+}
+
+.split-3 {
+  width: 30%;
+  min-width: 30%;
+  max-width: 30%;
+}
+
+.split-4 {
+  width: 22%;
+  min-width: 22%;
+  max-width: 22%;
 }

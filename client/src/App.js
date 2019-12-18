@@ -15,7 +15,8 @@ import Header from "./components/main/Header";
 import DayPlanPage from "./pages/allLists/dayplans/Builder";
 import DaylanList from "./pages/allLists/dayplans/show/Dayplans";
 import Explore from "./pages/explore/Explore";
-import AllUsersPage from "./pages/explore/AllUsersPage";
+import AllUsersPage from "./pages/explore/exploreComp/AllUsersPage";
+import UserProfile from "./pages/explore/UserProfile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     const run = async () => {
       try {
-        const loggedUser = await authService.isLoggedIn();
+        const loggedUser = await authService.getCurrent();
         if (loggedUser.username) {
           setUser(loggedUser);
         }
@@ -64,8 +65,16 @@ function App() {
         <Route path="/recipe/create" component={RecipePage} />
         <Route exact path="/dayplan" component={DaylanList} />
         <Route path="/dayplan/create" component={DayPlanPage} />
-        <Route exact path="/explore" component={Explore} />
+        <Route
+          exact
+          path="/explore"
+          render={props => <Explore {...props} user={user} />}
+        />
         <Route path="/explore/users" component={AllUsersPage} />
+        <Route
+          path="/explore/user/:id"
+          render={props => <UserProfile {...props} user={user} />}
+        />
       </Switch>
     </>
   );

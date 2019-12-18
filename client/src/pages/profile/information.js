@@ -1,8 +1,7 @@
 import React from "react";
 
 function UserInformation(props) {
-  const { user } = props;
-  console.log(user);
+  const { user, toggleHandler } = props;
   return (
     <div className="split-left-wrapper">
       <div className="profile-information">
@@ -25,17 +24,15 @@ function UserInformation(props) {
             <p className="follow-p">Followers</p>
             <div className="follow-number">
               <p>{user.followers.length}</p>
-              <img
-                alt=""
-                src={require("../../components/icons/image-plus.png")}
-              />
+              <img alt="" src={require("../../components/icons/eye.png")} />
             </div>
             <p className="follow-p">Following</p>
             <div className="follow-number">
               <p>{user.following.length}</p>
               <img
+                onClick={() => toggleHandler()}
                 alt=""
-                src={require("../../components/icons/image-plus.png")}
+                src={require("../../components/icons/eye.png")}
               />
             </div>
           </div>

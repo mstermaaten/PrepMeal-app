@@ -11,6 +11,7 @@ const createRecipeRouter = require("./routes/RecipeRouter");
 const createDayPlanRouter = require("./routes/DayPlanRouter");
 const createWeekPlanRouter = require("./routes/WeekPlanRouter");
 const imageRouter = require("./routes/imageUploadRouter");
+const updateRouter = require("./routes/updateRoutes");
 require("dotenv").config();
 
 var app = express();
@@ -77,6 +78,7 @@ app.use("/recipe", createRecipeRouter);
 app.use("/dayplan", createDayPlanRouter);
 app.use("/weekplan", createWeekPlanRouter);
 app.use("/upload", imageRouter);
+app.use("/update", updateRouter);
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));

@@ -133,7 +133,10 @@ function IngredientList(props) {
               />
             </li>
           ))}
-          <li className="create-button" onClick={() => createHandler()}>
+          <li
+            className="create-button shadow-hover"
+            onClick={() => createHandler()}
+          >
             Create new ingredient
           </li>
         </ul>
@@ -141,7 +144,7 @@ function IngredientList(props) {
         <div>
           <p>Not finding what your looking for? Make the ingredient:</p>
 
-          <button className="create-button" onClick={() => createHandler()}>
+          <button className="create-button   v" onClick={() => createHandler()}>
             Create now!
           </button>
         </div>

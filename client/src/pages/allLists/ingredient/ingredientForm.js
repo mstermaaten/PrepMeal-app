@@ -9,6 +9,8 @@ function IngredientForm(props) {
     fats: null,
     category: null
   });
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (props.values) setValues(props.values);
@@ -20,7 +22,23 @@ function IngredientForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (
+      !values.name ||
+      !values.protein ||
+      !values.kcal ||
+      !values.carbs ||
+      !values.fats ||
+      !values.category
+    ) {
+      errorHandler("Please fill in all the required fields");
+      return;
+    }
     props.onSubmit(values);
+  };
+
+  const errorHandler = message => {
+    setError(!error);
+    setErrorMessage(message);
   };
 
   return (
@@ -44,6 +62,7 @@ function IngredientForm(props) {
               value={values.category}
               onChange={changeHandler}
             >
+              <option>Select</option>
               <option value="Vegetables">Vegetables</option>
               <option value="Fruits">Fruits</option>
               <option value="Grains">Grains</option>
@@ -113,6 +132,13 @@ function IngredientForm(props) {
         </div>
         <button type="submit">{props.type}</button>
       </form>
+      {error && (
+        <div className="error-container">
+          <h1>Warning</h1>
+          <h3>{errorMessage}</h3>
+          <p onClick={() => errorHandler(null)}>OK</p>
+        </div>
+      )}
     </div>
   );
 }

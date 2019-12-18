@@ -7,17 +7,26 @@ import "./styles.css";
 
 function Profile(props) {
   const { user } = props;
-  console.log(user);
+  const [toggle, setToggle] = useState(false);
+
+  const toggleHandler = item => {
+    setToggle(!toggle);
+  };
   return (
     <>
       {user ? (
         <div className="profile-wrapper">
           <div className="split">
-            <UserInformation user={user} />
+            <UserInformation user={user} toggleHandler={toggleHandler} />
             <ActionButtons />
           </div>
           <div className="split"></div>
           <div className="split"></div>
+          {toggle && (
+            <div className="box shadow">
+              <p onClick={() => toggleHandler()}>X</p>
+            </div>
+          )}
         </div>
       ) : (
         <Redirect to="/" />
@@ -27,19 +36,3 @@ function Profile(props) {
 }
 
 export default withRouter(Profile);
-
-// <>
-//   {user ? (
-//     <div>
-//       <h1>profile</h1>
-//       <Link to="/recipe">
-//         <button>See Your Recipes</button>
-//       </Link>
-//       <Link to="/ingredient">
-//         <button>See Ingredients</button>
-//       </Link>
-//     </div>
-//   ) : (
-//     <Redirect to="/" />
-//   )}
-// </>

@@ -10,9 +10,7 @@ export default class UserService {
 
   getByFilter = async filter => {
     try {
-      const { data } = await this.service.get(
-        "/user/filter/" + filter
-      );
+      const { data } = await this.service.get("/user/filter/" + filter);
       return data;
     } catch (err) {
       console.log("error getting ingredient" + err);
@@ -40,7 +38,7 @@ export default class UserService {
 
   getOneUser = async id => {
     try {
-      const { data } = await this.service.get("/user/find" + id);
+      const { data } = await this.service.get("/user/find/" + id);
       return data;
     } catch (err) {
       console.log("Sorry user could't be found");

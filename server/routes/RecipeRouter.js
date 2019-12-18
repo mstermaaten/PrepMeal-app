@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 // const Ingredient = require("../models/Ingredients");
 const Recipe = require("../models/Recipe");
+const User = require("../models/User");
 
 router.post("/create", async (req, res, next) => {
   const {
@@ -14,7 +15,7 @@ router.post("/create", async (req, res, next) => {
     ingredientValues,
     storedList
   } = req.body;
-  const { _id: userId } = req.session.user;
+  const userID = req.session.user._id;
 
   try {
     const newRecipe = new Recipe({
@@ -23,18 +24,27 @@ router.post("/create", async (req, res, next) => {
       description,
       diet,
       img: imageFile,
-      createdBy: userId,
+      createdBy: userID,
       time,
       nutrients: ingredientValues,
       likes: [],
       ingredients: [...storedList]
     });
+
     newRecipe.save(function(err, ing) {
-      console.log(ing);
       if (err) {
         console.log(err);
       }
     });
+    debugger;
+    const newId = newRecipe.id;
+    const updateUser = await User.update(
+      { _id: userID },
+      {
+        $push: { createdRecipes: newId }
+      }
+    );
+    res.status(200).json(updateUser);
     res.status(200).json(newRecipe);
   } catch (err) {
     console.log(err);
@@ -50,7 +60,6 @@ router.get("/", async (req, res, next) => {
   }
   try {
     const allCreatedRecipes = await Recipe.find({ createdBy: userId });
-    3;
     res.status(200).json(allCreatedRecipes);
   } catch (err) {
     res
