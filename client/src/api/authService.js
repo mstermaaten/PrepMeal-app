@@ -34,7 +34,11 @@ export default class AuthService {
   };
 
   getCurrent = async () => {
-    const { data } = await this.service.get("/auth/current");
-    return data;
+    try {
+      const { data } = await this.service.get("/auth/current");
+      return data;
+    } catch {
+      return null;
+    }
   };
 }

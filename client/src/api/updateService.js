@@ -33,4 +33,22 @@ export default class UpdateService {
       console.log(err);
     }
   };
+
+  addLikedRecipe = async id => {
+    try {
+      const data = await this.service.put("/update/copy/recipe/add/" + id);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  removeLikedRecipe = async id => {
+    try {
+      const data = await this.service.put("/update/copy/recipe/delete/" + id);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }

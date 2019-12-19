@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import IngredientService from "../../../../api/ingredientService";
+import UpdateService from "../../../../api/updateService";
 import List from "./ingredientItems";
 import { Link } from "react-router-dom";
 
 function Values(props) {
   const [ingredients, setIngredients] = useState([]);
+  const [show, setShow] = useState("hide");
   const ingredientService = new IngredientService();
+  const updateService = new UpdateService();
   const { recipe, type } = props;
   const nutrients = props.recipe.nutrients;
 
@@ -21,10 +24,23 @@ function Values(props) {
     run();
   }, []);
 
+  const copyHandler = async id => {
+    const updateCopy = await updateService.addLikedRecipe(id);
+    console.log(updateCopy);
+    if (updateCopy) {
+      setShow("show");
+      setTimeout(() => setShow("hide"), 2500);
+    }
+  };
+
   console.log(recipe);
 
   return (
     <>
+      <div className={`pop-up ${show} shadow`}>
+        <h4>Recipe added to collection!</h4>
+      </div>
+
       {nutrients.protein ? (
         <div className="recipe-list-item-wrapper">
           <div
@@ -77,6 +93,7 @@ function Values(props) {
           </div>
           {type === "explore" ? (
             <img
+              onClick={() => copyHandler(recipe._id)}
               className="copy-recipe img-action cursor"
               src={require("../../../../components/icons/copy.png")}
             />

@@ -198,3 +198,33 @@ p {
 .cursor {
   cursor: pointer;
 }
+
+.pop-up {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background-color: #3ec1d3;
+  transition: 0.4s;
+  z-index: 22;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.pop-up h4 {
+  color: white;
+}
+
+.hide {
+  opacity: 0;
+  transition: 0.2s;
+  visibility: hidden;
+}
+
+.show {
+  opacity: 1;
+  transition: 0.3s;
+  visibility: visible;
+}

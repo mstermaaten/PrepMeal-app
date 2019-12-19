@@ -13,6 +13,8 @@ function UserCard(props) {
   });
 
   const second = thisActiveUser => {
+    debugger;
+    console.log(thisActiveUser);
     thisActiveUser.following.includes(id)
       ? setIsFollowing(true)
       : setIsFollowing(false);

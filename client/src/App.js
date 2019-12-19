@@ -20,18 +20,15 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
   const authService = new AuthService();
 
   useEffect(() => {
     const run = async () => {
-      try {
-        const loggedUser = await authService.getCurrent();
-        if (loggedUser.username) {
-          setUser(loggedUser);
-        }
-      } catch (err) {
-        console.log("You must log in" + err);
-      }
+      debugger;
+      const loggedUser = await authService.getCurrent();
+      setUser(loggedUser);
+      setUserLoading(false);
     };
 
     run();
@@ -41,7 +38,7 @@ function App() {
     <>
       <div className="clippath"></div>
       <div className="clippath-two"></div>
-      <Header user={user} setUser={setUser} />
+      {!userLoading && <Header user={user} setUser={setUser} />}
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route
