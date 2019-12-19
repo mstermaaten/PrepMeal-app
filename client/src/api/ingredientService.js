@@ -34,10 +34,8 @@ export default class IngredientService {
 
   getOne = async id => {
     try {
-      const { data: oneIngredients } = await this.service.get(
-        "/ingredient/" + id
-      );
-      return oneIngredients;
+      const { data } = await this.service.get("/ingredient/find/" + id);
+      return data;
     } catch (err) {
       console.log("error getting ingredient" + err);
       return err;

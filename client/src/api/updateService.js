@@ -24,4 +24,13 @@ export default class UpdateService {
       console.log(err);
     }
   };
+
+  updateProfilePic = async newPic => {
+    try {
+      const data = await this.service.put("/update/profilePic", { newPic });
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Landing from "./pages/landing";
 import Profile from "./pages/profile/profile";
@@ -17,6 +16,7 @@ import DaylanList from "./pages/allLists/dayplans/show/Dayplans";
 import Explore from "./pages/explore/Explore";
 import AllUsersPage from "./pages/explore/exploreComp/AllUsersPage";
 import UserProfile from "./pages/explore/UserProfile";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -63,6 +63,8 @@ function App() {
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
         <Route exact path="/recipe" component={RecipesList} />
         <Route path="/recipe/create" component={RecipePage} />
+        <Route path="/recipe/update/:id" component={RecipePage} />
+
         <Route exact path="/dayplan" component={DaylanList} />
         <Route path="/dayplan/create" component={DayPlanPage} />
         <Route

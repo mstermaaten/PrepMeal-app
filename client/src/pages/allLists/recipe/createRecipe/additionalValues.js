@@ -10,7 +10,11 @@ function Inputs(props) {
     lunch,
     snack,
     diner,
-    dessert
+    dessert,
+    name,
+    time,
+    description,
+    diet
   } = props;
 
   return (
@@ -23,6 +27,7 @@ function Inputs(props) {
             className="input name"
             name="name"
             placeholder="Recipe Name"
+            value={name}
             onChange={e => onChangeHandler(e)}
           />
         </div>
@@ -31,6 +36,7 @@ function Inputs(props) {
             <label>Cooking Duration:</label>
             <input
               className="time input"
+              value={time}
               name="time"
               placeholder="20 min, 1 hour &amp; 45 min..."
               type="text"
@@ -43,6 +49,7 @@ function Inputs(props) {
               className="input diet"
               name="diet"
               onChange={e => onChangeHandler(e)}
+              value={diet}
             >
               <option>Select</option>
               <option value="Keto">Keto</option>
@@ -99,6 +106,7 @@ function Inputs(props) {
         <div className="input-wrapper">
           <label>Description:</label>
           <textarea
+            value={description}
             className="input description"
             name="description"
             type="text"

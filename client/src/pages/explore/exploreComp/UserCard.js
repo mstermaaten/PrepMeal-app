@@ -18,17 +18,37 @@ function UserCard(props) {
       : setIsFollowing(false);
   };
 
+  const linkStyles = {
+    cursor: "pointer",
+    width: "100%",
+    textDecoration: "none"
+  };
+
   console.log(user);
   return (
-    <div className="user-card-info box shadow">
+    <div
+      className="user-card-info box shadow-hover"
+      style={{ cursor: "default" }}
+    >
       <div className="usercard-information">
-        <div
-          className="user-foto"
-          style={{ backgroundImage: `url(${user.foto})` }}
-        />
-
+        <Link
+          to={`/explore/user/${user._id}`}
+          classname="link-style"
+          style={linkStyles}
+        >
+          <div
+            className="user-foto"
+            style={{ backgroundImage: `url(${user.foto})` }}
+          />
+        </Link>
         <div className="user-info">
-          <p className="username">{user.username}</p>
+          <Link
+            to={`/explore/user/${user._id}`}
+            classname="link-style"
+            style={linkStyles}
+          >
+            <p className="username full">{user.username}</p>
+          </Link>
           <div className="follow">
             <p className="follow-p">Followers</p>
             <div className="follow-number">
@@ -49,21 +69,27 @@ function UserCard(props) {
                 />
               )}
             </div>
-            <p className="follow-p">Recipes</p>
-            <div className="follow-number">
-              <p>{user.createdRecipes.length}</p>
-            </div>
+            <Link
+              to={`/explore/user/${user._id}`}
+              classname="link-style"
+              style={linkStyles}
+            >
+              <p className="follow-p">Recipes</p>
+              <div className="follow-number">
+                <p>{user.createdRecipes.length}</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
       <div className="see-profile">
-        <Link to={`/explore/user/${user._id}`}>
+        {/* <Link to={`/explore/user/${user._id}`}>
           <img
             alt=""
             src={require("../../../components/icons/eye.png")}
             style={{ cursor: "pointer" }}
           />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

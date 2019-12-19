@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import UserService from "../../api/userService";
 import UpdateService from "../../api/updateService";
 import AuthService from "../../api/authService";
-
+import Recipes from "./userProfileComp/CreatedRecipes";
 import { Container, Row, Col } from "react-grid-system";
 import UserHeader from "./userProfileComp/UserHeader";
 
@@ -15,6 +15,7 @@ function UserProfile(props) {
   const [profileUser, setProfileUser] = useState(null);
   const [activeUser, setActiveUser] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [followers, setFollowers] = useState(null);
 
   useEffect(() => {
     const run = async () => {
@@ -22,6 +23,7 @@ function UserProfile(props) {
         first();
         const userResult = await userService.getOneUser(id);
         setProfileUser(userResult);
+        setFollowers(userResult.followers.length);
       } catch (err) {
         console.log(err);
       }
@@ -45,6 +47,7 @@ function UserProfile(props) {
     try {
       const added = await updateService.addFollower(id);
       first();
+      setFollowers(followers + 1);
       return added;
     } catch (err) {
       console.log(err);
@@ -55,6 +58,7 @@ function UserProfile(props) {
     try {
       const added = await updateService.removeFollower(id);
       first();
+      setFollowers(followers - 1);
       return added;
     } catch (err) {
       console.log(err);
@@ -70,8 +74,10 @@ function UserProfile(props) {
             isFollowing={isFollowing}
             addFollow={addFollow}
             removeFollow={removeFollow}
+            followers={followers}
           />
           <div className="border" />
+          <Recipes id={id} />
         </div>
       )}
     </div>

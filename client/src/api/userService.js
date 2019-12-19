@@ -44,4 +44,13 @@ export default class UserService {
       console.log("Sorry user could't be found");
     }
   };
+
+  createdRecipes = async userID => {
+    try {
+      const { data } = await this.service.get("/user/createdRecipes/" + userID);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }

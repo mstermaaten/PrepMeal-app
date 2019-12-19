@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const User = require("../models/User");
+const Recipe = require("../models/Recipe");
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
@@ -48,6 +49,19 @@ router.get("/filter/:input", async (req, res, next) => {
   } catch (err) {
     console.log(err);
     next(new Erros(err));
+  }
+});
+
+router.get("/createdRecipes/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const allCreatedRecipes = await Recipe.find({ createdBy: id });
+    res.status(200).json(allCreatedRecipes);
+  } catch (err) {
+    res
+      .status(404)
+      .json({ message: "oeps no recipes created yet or found" + err });
   }
 });
 module.exports = router;

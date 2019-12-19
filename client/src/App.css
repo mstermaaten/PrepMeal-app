@@ -194,3 +194,7 @@ p {
   min-width: 22%;
   max-width: 22%;
 }
+
+.cursor {
+  cursor: pointer;
+}

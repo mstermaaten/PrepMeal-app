@@ -1,7 +1,13 @@
 import React from "react";
 
 function UserHeader(props) {
-  const { profileUser, isFollowing, addFollow, removeFollow } = props;
+  const {
+    profileUser,
+    isFollowing,
+    addFollow,
+    removeFollow,
+    followers
+  } = props;
 
   return (
     <div className="user-profile-information flex center full">
@@ -32,7 +38,7 @@ function UserHeader(props) {
         <div className="flex between full">
           <div className="split-2">
             <p className="follow-p full">Followers</p>
-            <p className="box shadow full">{profileUser.followers.length}</p>
+            <p className="box shadow full">{followers}</p>
           </div>
 
           <div className="split-2">
@@ -49,7 +55,9 @@ function UserHeader(props) {
           </div>
           <div className="split-3">
             <p className="follow-p full">Day Plans</p>
-            <p className="box shadow full">{profileUser.followers.length}</p>
+            <p className="box shadow full">
+              {profileUser.createdRecipes.length}
+            </p>
           </div>
 
           <div className="split-3">

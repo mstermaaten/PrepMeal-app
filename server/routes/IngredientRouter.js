@@ -25,10 +25,11 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/find/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
-    const oneIngredients = await Ingredient.findById(id);
+    debugger;
+    const oneIngredients = await Ingredient.findById({ id });
     res.status(200).json(oneIngredients);
   } catch (err) {
     res.status(500).json({ message: "oeps something went wrong" + err });

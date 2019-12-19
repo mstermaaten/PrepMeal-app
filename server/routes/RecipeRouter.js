@@ -53,7 +53,7 @@ router.post("/create", async (req, res, next) => {
 });
 
 router.get("/", async (req, res, next) => {
-  const { _id: userId } = req.session.user;
+  const userId = req.session.user._id;
   if (!userId) {
     res.status(404).json({ message: "sorry your not logged in..." });
     return;
@@ -72,7 +72,7 @@ router.get("/find/:id", async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const oneRecipe = await Recipe.findById({ id });
+    const oneRecipe = await Recipe.findById(id);
     res.status(200).json(oneRecipe);
   } catch (err) {
     res.status(404).json({ message: "could not find this recipe" + err });

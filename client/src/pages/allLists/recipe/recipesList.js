@@ -14,7 +14,6 @@ const RecipesList = props => {
   const [created, setCreated] = useState("showResult");
   const [liked, setLiked] = useState("hideResult");
 
-  console.log(props.type);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -30,16 +29,6 @@ const RecipesList = props => {
 
     getRecipes();
   }, []);
-
-  const onClickCreated = () => {
-    setCreated("showResult");
-    setLiked("hideResult");
-  };
-
-  const onClickLiked = () => {
-    setCreated("hideResult");
-    setLiked("showResult");
-  };
 
   const onWheel = e => {
     e.preventDefault();

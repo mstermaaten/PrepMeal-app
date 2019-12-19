@@ -12,14 +12,21 @@ router.put("/following/add/:id", async (req, res, next) => {
 
   try {
     debugger;
-    const updatedUser = await User.updateOne(
+    const updatedUserOne = await User.updateOne(
       { _id: userID },
       {
         $addToSet: { following: followID }
       }
     );
+
+    const updatedUserTwo = await User.updateOne(
+      { _id: followID },
+      {
+        $addToSet: { followers: userID }
+      }
+    );
     req.session.reload();
-    res.status(200).json(updatedUser);
+    res.status(200).json(updatedUserOne, updatedUserTwo);
   } catch (err) {
     res
       .status(404)
@@ -32,12 +39,39 @@ router.put("/following/delete/:id", async (req, res, next) => {
   const followID = req.params.id;
 
   try {
-    const updatedUser = await User.updateOne(
+    const updatedUserOne = await User.updateOne(
       { _id: userID },
       {
         $pull: { following: followID }
       }
     );
+    const updatedUserTwo = await User.updateOne(
+      { _id: followID },
+      {
+        $pull: { followers: userID }
+      }
+    );
+    req.session.reload();
+    res.status(200).json(updatedUserOne, updatedUserTwo);
+  } catch (err) {
+    res
+      .status(404)
+      .json({ message: "oeps, not able to add this als follower" });
+  }
+});
+
+router.put("/profilePic", async (req, res, next) => {
+  const { newPic } = req.body;
+  const userID = req.session.user._id;
+  try {
+    debugger;
+    const updatedUser = await User.updateOne(
+      { _id: userID },
+      {
+        $set: { foto: newPic }
+      }
+    );
+
     req.session.reload();
     res.status(200).json(updatedUser);
   } catch (err) {

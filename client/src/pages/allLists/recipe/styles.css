@@ -122,7 +122,8 @@
   margin: 5px 5px;
 }
 
-.link-position {
+.link-position,
+.copy-recipe {
   position: relative;
   margin-top: 10px;
   margin-right: 10px;

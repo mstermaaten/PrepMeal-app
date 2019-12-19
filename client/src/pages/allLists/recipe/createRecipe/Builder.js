@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import IngredientList from "./ingredientList";
 import RecipeBuilder from "./RecipeBuilder";
@@ -7,10 +7,12 @@ import Values from "./Values";
 import Inputs from "./additionalValues";
 import RecipeService from "../../../../api/recipeService";
 import ImageUploader from "../../../../api/imageUploadService";
+import IngredientService from "../../../../api/ingredientService";
 import CreateIngredient from "../../ingredient/createIngredient";
 import "./styles.css";
 
 function RecipePage(props) {
+  const editID = props.match.params.id;
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [description, setDescription] = useState(null);
@@ -34,6 +36,36 @@ function RecipePage(props) {
   const [errorMessage, setErrorMessage] = useState(null);
   const imageUploader = new ImageUploader();
   const recipeService = new RecipeService();
+  const ingredientService = new IngredientService();
+
+  useEffect(() => {
+    if (editID) {
+      const run = async () => {
+        try {
+          const recipeInfo = await recipeService.getOne(editID);
+          setName(recipeInfo.name);
+          setTime(recipeInfo.time);
+          setDescription(recipeInfo.description);
+          setImageFile(recipeInfo.foto);
+          setDiet(recipeInfo.diet);
+          setImageText("Image is uploaded!");
+          const savedItems = recipeInfo.ingredients.map(async item => {
+            const id = item.ingredientId;
+            const ingredient = await ingredientService.getOne(id);
+            const portion = item.portion;
+            return ingredient;
+          });
+          console.log(savedItems);
+          console.log(recipeInfo);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      run();
+    } else {
+      return;
+    }
+  }, []);
 
   const mapper = {
     name: setName,
@@ -130,13 +162,15 @@ function RecipePage(props) {
     }
   };
 
-  console.log(items);
-
   return (
     <div className="builder">
       <div className="builder-container">
         <div className="left">
           <Inputs
+            name={name}
+            time={time}
+            description={description}
+            diet={diet}
             onChangeHandler={onChangeHandler}
             categoryToggle={categoryToggle}
             imageHandler={imageHandler}
