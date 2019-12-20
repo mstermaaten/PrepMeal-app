@@ -13,15 +13,18 @@ const RecipesList = props => {
   const ingredientService = new IngredientService();
   const [created, setCreated] = useState("showResult");
   const [liked, setLiked] = useState("hideResult");
-
+  const { type } = props;
 
   useEffect(() => {
     const getRecipes = async () => {
       try {
-        const recipesResult = await recipeService.getAllCreatedRecipes();
-        setCreatedRecipes(recipesResult);
-        console.log(recipesResult);
-        return recipesResult;
+        const likedRecipesResult = await recipeService.getAllLikedRecipes();
+        setLikedRecipes(likedRecipesResult);
+
+        const createdRecipesResult = await recipeService.getAllCreatedRecipes();
+        setCreatedRecipes(createdRecipesResult);
+
+        return likedRecipesResult, createdRecipesResult;
       } catch (err) {
         console.log("oeps somehting whent wrong with getting the recipess");
       }
@@ -42,13 +45,36 @@ const RecipesList = props => {
     });
   };
 
-  const CreatedList = () => {
+  const onWheel2 = e => {
+    e.preventDefault();
+    var container = document.getElementById("category-header2");
+    var containerScrollPosition = document.getElementById("category-header2")
+      .scrollLeft;
+    container.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behaviour: "smooth" //if you want smooth scrolling
+    });
+  };
+
+  const CreatedList = props => {
     return (
-      <div className="parent" id="category-header" onWheel={onWheel}>
-        {createdRecipes.map((recipe, i) => {
-          return <Values key={i} recipe={recipe} />;
-        })}
-      </div>
+      <>
+        {props.type === "created" && (
+          <div className="parent" id="category-header" onWheel={onWheel}>
+            {createdRecipes.map((recipe, i) => {
+              return <Values key={i} recipe={recipe} />;
+            })}
+          </div>
+        )}
+        {props.type === "liked" && (
+          <div className="parent" id="category-header2" onWheel={onWheel2}>
+            {likedRecipes.map((recipe, i) => {
+              return <Values key={i} recipe={recipe} type={"delete"} />;
+            })}
+          </div>
+        )}
+      </>
     );
   };
 
@@ -59,9 +85,13 @@ const RecipesList = props => {
         <Link to="/recipe/create" className="link-style">
           <p className="click-button shadow-hover">Create new recipe</p>
         </Link>
-        <div>
+        <div className="user-recipe-view-wrapper">
           <h2>Created Recipes:</h2>
-          <>{!createdRecipes ? <h1>Loading</h1> : <CreatedList />}</>
+          {!createdRecipes ? <h1>Loading</h1> : <CreatedList type="created" />}
+        </div>
+        <div className="user-recipe-view-wrapper">
+          <h2>Liked Recipes:</h2>
+          {!likedRecipes ? <h1>Loading</h1> : <CreatedList type="liked" />}
         </div>
       </div>
     </div>

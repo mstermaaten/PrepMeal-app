@@ -11,6 +11,7 @@ function Values(props) {
   const updateService = new UpdateService();
   const { recipe, type } = props;
   const nutrients = props.recipe.nutrients;
+  const [popMessage, setPopMessage] = useState("");
 
   useEffect(() => {
     const run = async () => {
@@ -28,6 +29,17 @@ function Values(props) {
     const updateCopy = await updateService.addLikedRecipe(id);
     console.log(updateCopy);
     if (updateCopy) {
+      setPopMessage("Recipe added to collection!");
+      setShow("show");
+      setTimeout(() => setShow("hide"), 2500);
+    }
+  };
+
+  const deleteHandler = async id => {
+    const deletedRecipe = await updateService.removeLikedRecipe(id);
+    console.log(deletedRecipe);
+    if (deletedRecipe) {
+      setPopMessage("Recipe deleted from collection!");
       setShow("show");
       setTimeout(() => setShow("hide"), 2500);
     }
@@ -38,7 +50,7 @@ function Values(props) {
   return (
     <>
       <div className={`pop-up ${show} shadow`}>
-        <h4>Recipe added to collection!</h4>
+        <h4>{popMessage}</h4>
       </div>
 
       {nutrients.protein ? (
@@ -91,13 +103,21 @@ function Values(props) {
               </div>
             </div>
           </div>
-          {type === "explore" ? (
+          {type === "explore" && (
             <img
               onClick={() => copyHandler(recipe._id)}
               className="copy-recipe img-action cursor"
               src={require("../../../../components/icons/copy.png")}
             />
-          ) : (
+          )}
+          {type === "delete" && (
+            <img
+              onClick={() => deleteHandler(recipe._id)}
+              className="copy-recipe img-action cursor"
+              src={require("../../../../components/icons/trash.png")}
+            />
+          )}
+          {!type && (
             <Link className="link-position" to={`/recipe/update/${recipe._id}`}>
               <img
                 className="edit"
@@ -105,6 +125,9 @@ function Values(props) {
               />
             </Link>
           )}
+          <div className="heart">
+            <p className="white">{recipe.likes.length}</p>
+          </div>
         </div>
       ) : (
         <h1>Loading...</h1>

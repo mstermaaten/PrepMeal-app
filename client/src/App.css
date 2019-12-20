@@ -228,3 +228,22 @@ p {
   transition: 0.3s;
   visibility: visible;
 }
+
+.heart {
+  background-image: url("./components/icons//like.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 80%;
+  right: 5px;
+}
+
+.white {
+  color: white;
+}

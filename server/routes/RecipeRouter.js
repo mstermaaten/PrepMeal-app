@@ -103,17 +103,20 @@ router.put("/update/:id", async (req, res, next) => {
 });
 
 router.get("/likes", async (req, res, next) => {
-  const { _id: userId } = req.session.user;
-
+  const userId = req.session.user._id;
+  let likedID;
   if (!userId) {
     res.status(404).json({ message: "please log in" });
     return;
+  } else {
+    debugger;
+    const user = await User.findById(userId);
+    likedID = user.likedRecipes.map(i => i._id);
   }
 
   try {
-    const allLikedRecipes = await Recipe.find({
-      likes: { $elemMatch: { user: userId } }
-    });
+    debugger;
+    const allLikedRecipes = await Recipe.find({_id: likedID});
     res.status(200).json(allLikedRecipes);
   } catch (err) {
     res
