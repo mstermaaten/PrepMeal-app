@@ -87,13 +87,15 @@ router.put("/copy/recipe/add/:id", async (req, res, next) => {
   const recipeID = req.params.id;
 
   try {
-    const user = await User.findById(userID, {
-      likedRecipes: { $in: [recipeID] }
+    debugger;
+    const user = await User.findOne({
+      _id: userID,
+      likedRecipes: { $in: recipeID }
     });
 
     debugger;
     if (user) {
-      res.status(200).json({ message: "Already liked" });
+      res.status(200).json(false);
 
       return;
     } else {
@@ -118,7 +120,7 @@ router.put("/copy/recipe/add/:id", async (req, res, next) => {
   } catch (err) {
     console.log(err);
     res
-      .status(404)
+      .status(500)
       .json({ message: "oeps, not able to add this als follower" });
   }
 });

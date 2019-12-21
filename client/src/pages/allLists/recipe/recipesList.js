@@ -57,6 +57,10 @@ const RecipesList = props => {
     });
   };
 
+  const deleteLikedList = id => {
+    setLikedRecipes(likedRecipes.filter(i => i._id !== id));
+  };
+
   const CreatedList = props => {
     return (
       <>
@@ -70,7 +74,14 @@ const RecipesList = props => {
         {props.type === "liked" && (
           <div className="parent" id="category-header2" onWheel={onWheel2}>
             {likedRecipes.map((recipe, i) => {
-              return <Values key={i} recipe={recipe} type={"delete"} />;
+              return (
+                <Values
+                  key={i}
+                  recipe={recipe}
+                  type={"delete"}
+                  deleteLikedList={deleteLikedList}
+                />
+              );
             })}
           </div>
         )}

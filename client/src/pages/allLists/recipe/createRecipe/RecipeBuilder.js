@@ -29,11 +29,11 @@ function RecipeBuilder(props) {
                 </div>
                 <div className="action-buttons">
                   <img
-                    className="actions"
+                    className="actions cursor"
                     src={require("../../../../components/icons/pencil-edit-button.png")}
                   />
                   <img
-                    className="actions"
+                    className="actions cursor"
                     src={require("../../../../components/icons/trash.png")}
                     onClick={() => removeHandler(item)}
                   />

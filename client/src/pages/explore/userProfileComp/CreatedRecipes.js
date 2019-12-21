@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { Link } from "react-router-dom";
 import UserService from "../../../api/userService";
 import Values from "../../allLists/recipe/recipeBlock/totalValues";
 
-function Recipes(props) {
+const Recipes = memo(props => {
   const { id } = props;
   const [createdRecipes, setCreatedRecipes] = useState(null);
   const userService = new UserService();
@@ -23,6 +23,7 @@ function Recipes(props) {
   }, []);
 
   const onWheel = e => {
+    e.stopPropagation();
     e.preventDefault();
     var container = document.getElementById("category-header");
     var containerScrollPosition = document.getElementById("category-header")
@@ -38,7 +39,7 @@ function Recipes(props) {
     return (
       <div className="parent" id="category-header" onWheel={onWheel}>
         {createdRecipes.map((recipe, i) => {
-          return <Values key={i} recipe={recipe} type={"explore"}/>;
+          return <Values key={i} recipe={recipe} type={"explore"} />;
         })}
       </div>
     );
@@ -51,6 +52,6 @@ function Recipes(props) {
       {!createdRecipes ? <h4>No recipes created yet...</h4> : <CreatedList />}
     </div>
   );
-}
+});
 
 export default Recipes;

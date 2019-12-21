@@ -37,23 +37,29 @@ const Login = props => {
   };
 
   return (
-    <div className="login-block">
-      <h1>Login</h1>
-      <form onSubmit={submitHandler}>
-        <input
-          onChange={onchangeHandler}
-          type="text"
-          name="username"
-          placeholder="username"
-        />
-        <input
-          onChange={onchangeHandler}
-          type="password"
-          name="password"
-          placeholder="password"
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="landing">
+      <div className="login-block shadow">
+        <h1>Login</h1>
+        <form onSubmit={submitHandler}>
+          <label>Choose a username</label>
+          <input
+            onChange={onchangeHandler}
+            type="text"
+            name="username"
+            className="box"
+          />
+          <label>Password</label>
+          <input
+            onChange={onchangeHandler}
+            type="password"
+            name="password"
+            className="box"
+          />
+          <button type="submit" className="cursor">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

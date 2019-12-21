@@ -41,7 +41,7 @@ function UserInformation(props) {
           >
             <div className="edit-container">
               <img
-                className="edit-foto"
+                className="edit-foto cursor"
                 src={require("../../components/icons/pencil-edit-button.png")}
                 onClick={() => clickImageHandler()}
               />
@@ -60,7 +60,11 @@ function UserInformation(props) {
             <p className="follow-p">Followers</p>
             <div className="follow-number">
               <p>{user.followers.length}</p>
-              <img alt="" src={require("../../components/icons/eye.png")} />
+              <img
+                alt=""
+                src={require("../../components/icons/eye.png")}
+                className="cursor"
+              />
             </div>
             <p className="follow-p">Following</p>
             <div className="follow-number">
@@ -69,6 +73,7 @@ function UserInformation(props) {
                 onClick={() => toggleHandler()}
                 alt=""
                 src={require("../../components/icons/eye.png")}
+                className="cursor"
               />
             </div>
           </div>

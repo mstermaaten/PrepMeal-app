@@ -127,7 +127,7 @@ function IngredientList(props) {
               </div>
 
               <img
-                className="add-icon"
+                className="add-icon cursor"
                 onClick={() => toggleHandler(item)}
                 src={require("../../../../components/icons/plus.png")}
               />

@@ -3,17 +3,20 @@ import IngredientService from "../../../../api/ingredientService";
 import UpdateService from "../../../../api/updateService";
 import List from "./ingredientItems";
 import { Link } from "react-router-dom";
+import Trash from "../../../../components/icons/trash.png";
 
 function Values(props) {
   const [ingredients, setIngredients] = useState([]);
   const [show, setShow] = useState("hide");
   const ingredientService = new IngredientService();
   const updateService = new UpdateService();
-  const { recipe, type } = props;
+  const { recipe, type, deleteLikedList } = props;
   const nutrients = props.recipe.nutrients;
   const [popMessage, setPopMessage] = useState("");
+  const [likedAmount, setLikedAmount] = useState(recipe.likes.length);
 
   useEffect(() => {
+    debugger;
     const run = async () => {
       const { ingredients } = props.recipe;
       const ingredientsIds = ingredients.map(i => i.ingredientId);
@@ -28,7 +31,12 @@ function Values(props) {
   const copyHandler = async id => {
     const updateCopy = await updateService.addLikedRecipe(id);
     console.log(updateCopy);
-    if (updateCopy) {
+    if (!updateCopy.data) {
+      setPopMessage("Recipe already in collection!");
+      setShow("show");
+      setTimeout(() => setShow("hide"), 2500);
+    } else {
+      setLikedAmount(likedAmount + 1);
       setPopMessage("Recipe added to collection!");
       setShow("show");
       setTimeout(() => setShow("hide"), 2500);
@@ -39,13 +47,12 @@ function Values(props) {
     const deletedRecipe = await updateService.removeLikedRecipe(id);
     console.log(deletedRecipe);
     if (deletedRecipe) {
+      deleteLikedList(id);
       setPopMessage("Recipe deleted from collection!");
       setShow("show");
       setTimeout(() => setShow("hide"), 2500);
     }
   };
-
-  console.log(recipe);
 
   return (
     <>
@@ -114,7 +121,7 @@ function Values(props) {
             <img
               onClick={() => deleteHandler(recipe._id)}
               className="copy-recipe img-action cursor"
-              src={require("../../../../components/icons/trash.png")}
+              src={Trash}
             />
           )}
           {!type && (
@@ -126,7 +133,7 @@ function Values(props) {
             </Link>
           )}
           <div className="heart">
-            <p className="white">{recipe.likes.length}</p>
+            <p className="white">{likedAmount}</p>
           </div>
         </div>
       ) : (

@@ -40,7 +40,7 @@ function App() {
       <div className="clippath-two"></div>
       {!userLoading && <Header user={user} setUser={setUser} />}
       <Switch>
-        <Route exact path="/" component={Landing} />
+        <Route path="/landing" component={Landing} />
         <Route
           path="/login"
           render={props => <Login user={user} {...props} setUser={setUser} />}
@@ -51,10 +51,13 @@ function App() {
             <Register user={user} {...props} setUser={setUser} />
           )}
         />
-        <Route
-          path="/profile"
-          render={props => <Profile {...props} user={user} />}
-        />
+        {!userLoading && (
+          <Route
+            exact
+            path="/"
+            render={props => <Profile {...props} user={user} />}
+          />
+        )}
         <Route exact path="/ingredient" component={Ingredients} />
         <Route path="/ingredient/create" component={CreateIngredient} />
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />

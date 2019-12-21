@@ -7,14 +7,13 @@ function UserCard(props) {
   const { user, addFollow, activeUser, removeFollow } = props;
   const id = user._id;
   const [isFollowing, setIsFollowing] = useState(false);
+  const [followAmount, setFollowAmount] = useState(user.followers.length);
 
   useEffect(() => {
     second(activeUser);
   });
 
   const second = thisActiveUser => {
-    debugger;
-    console.log(thisActiveUser);
     thisActiveUser.following.includes(id)
       ? setIsFollowing(true)
       : setIsFollowing(false);
@@ -25,8 +24,14 @@ function UserCard(props) {
     width: "100%",
     textDecoration: "none"
   };
+  const addRemove = type => {
+    if (type == "remove") {
+      setFollowAmount(followAmount - 1);
+    } else if (type == "add") {
+      setFollowAmount(followAmount + 1);
+    }
+  };
 
-  console.log(user);
   return (
     <div
       className="user-card-info box shadow-hover"
@@ -54,20 +59,26 @@ function UserCard(props) {
           <div className="follow">
             <p className="follow-p">Followers</p>
             <div className="follow-number">
-              <p>{user.followers.length}</p>
+              <p>{followAmount}</p>
               {isFollowing ? (
                 <img
                   style={{ cursor: "pointer" }}
                   alt=""
                   src={require("../../../components/icons/check.png")}
-                  onClick={() => removeFollow(user._id)}
+                  onClick={() => {
+                    removeFollow(user._id);
+                    addRemove("remove");
+                  }}
                 />
               ) : (
                 <img
                   style={{ cursor: "pointer" }}
                   alt=""
                   src={require("../../../components/icons/image-plus.png")}
-                  onClick={() => addFollow(user._id)}
+                  onClick={() => {
+                    addFollow(user._id);
+                    addRemove("add");
+                  }}
                 />
               )}
             </div>

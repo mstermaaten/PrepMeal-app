@@ -49,14 +49,15 @@ function RecipePage(props) {
           setImageFile(recipeInfo.foto);
           setDiet(recipeInfo.diet);
           setImageText("Image is uploaded!");
-          const savedItems = recipeInfo.ingredients.map(async item => {
-            const id = item.ingredientId;
-            const ingredient = await ingredientService.getOne(id);
-            const portion = item.portion;
-            return ingredient;
-          });
-          console.log(savedItems);
-          console.log(recipeInfo);
+          const savedItems = await Promise.all(
+            recipeInfo.ingredients.map(async item => {
+              const id = item.ingredientId;
+              const ingredient = await ingredientService.getOne(id);
+              const portion = item.portion;
+              return { ...ingredient, portion };
+            })
+          );
+          setItems(savedItems);
         } catch (err) {
           console.log(err);
         }

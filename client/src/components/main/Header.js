@@ -9,20 +9,20 @@ function Header(props) {
 
   const authService = new AuthService();
 
-  const onClickHanler = async () => {
-    try {
-      const logout = await authService.logout();
-      setUser(null);
-      props.history.push("/");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const onClickHanler = async () => {
+  //   try {
+  //     const logout = await authService.logout();
+  //     setUser(null);
+  //     props.history.push("/");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div className="header">
       <div className="logo">
-        <Link to="/profile">
+        <Link to="/">
           <img alt="" src={require("../icons/logo-blue.png")} />
         </Link>
       </div>
@@ -38,13 +38,11 @@ function Header(props) {
             <Link to="/dayplan">
               <button className="profile shadow-hover">Dayplans</button>
             </Link>
-            <Link to="/profile">
+            <Link to="/">
               <button className="profile shadow-hover">Profile</button>
             </Link>
 
-            <button onClick={onClickHanler} className="profile shadow-hover">
-              Logout
-            </button>
+            <button className="profile shadow-hover premium">Go Premium</button>
           </>
         ) : (
           <>
