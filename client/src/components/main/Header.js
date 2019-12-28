@@ -29,17 +29,17 @@ function Header(props) {
       <div className="menu-options">
         {user ? (
           <>
+            <Link to="/profile">
+              <button className="profile shadow-hover">Profile</button>
+            </Link>
             <Link to="/explore">
               <button className="profile shadow-hover">Explore</button>
             </Link>
-            <Link to="/recipe">
-              <button className="profile shadow-hover">Recipes</button>
+            <Link to="/recipe/create">
+              <button className="profile shadow-hover">New Recipe</button>
             </Link>
-            <Link to="/dayplan">
-              <button className="profile shadow-hover">Dayplans</button>
-            </Link>
-            <Link to="/">
-              <button className="profile shadow-hover">Profile</button>
+            <Link to="/dayplan/create">
+              <button className="profile shadow-hover">New Dayplan</button>
             </Link>
 
             <button className="profile shadow-hover premium">Go Premium</button>

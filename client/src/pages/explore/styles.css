@@ -75,3 +75,15 @@
 .user-profile-created-section h4 {
   text-align: center;
 }
+
+.profile-recipe-parent-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-profile-container {
+  padding-bottom: 50px;
+}

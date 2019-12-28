@@ -172,6 +172,11 @@ p {
   height: 30px;
 }
 
+.img-action-small {
+  width: 20px;
+  height: 20px;
+}
+
 .max {
   max-width: 1240px;
   display: block;
@@ -249,14 +254,17 @@ p {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 40px;
-  height: 40px;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   top: 80%;
   right: 5px;
+  padding: 1px;
 }
 
 .white {
@@ -266,4 +274,8 @@ p {
 button.premium {
   background-color: #44c4d5;
   color: white;
+}
+
+.auto {
+  margin: auto;
 }

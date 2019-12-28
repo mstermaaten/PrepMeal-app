@@ -54,9 +54,8 @@ function AllUsers(props) {
           <Row>
             {users.map((user, i) => {
               return (
-                <Col lg={4} md={6}>
+                <Col lg={4} md={6} key={i}>
                   <UserCard
-                    key={i}
                     user={user}
                     addFollow={addFollow}
                     removeFollow={removeFollow}

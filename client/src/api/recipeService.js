@@ -73,7 +73,6 @@ export default class RecipeService {
     storedList
   ) => {
     try {
-      debugger;
       const { data } = await this.service.post("/recipe/create", {
         name,
         category,
@@ -91,9 +90,29 @@ export default class RecipeService {
     }
   };
 
-  update = async (id, payload) => {
+  update = async (
+    id,
+    name,
+    category,
+    description,
+    diet,
+    imageFile,
+    time,
+    ingredientValues,
+    storedList
+  ) => {
     try {
-      const { data } = await this.service.put("/recipe/update/" + id, payload);
+      debugger;
+      const { data } = await this.service.put("/recipe/update/" + id, {
+        name,
+        category,
+        description,
+        diet,
+        imageFile,
+        time,
+        ingredientValues,
+        storedList
+      });
       return data;
     } catch (err) {
       console.log("error updating ingredient" + err);
@@ -101,12 +120,9 @@ export default class RecipeService {
     }
   };
 
-  delete = async (id, payload) => {
+  delete = async id => {
     try {
-      const { data } = await this.service.delete(
-        "/recipe/delete/" + id,
-        payload
-      );
+      const { data } = await this.service.delete("/recipe/delete/" + id);
       return data;
     } catch (err) {
       console.log("error deleting ingredient" + err);

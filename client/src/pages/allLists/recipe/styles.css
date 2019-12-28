@@ -29,8 +29,8 @@
 }
 
 .recipe-list-item-wrapper {
-  min-width: 40%;
-  max-width: 40%;
+  min-width: 45%;
+  max-width: 45%;
   border-radius: 15px;
   -webkit-box-shadow: 0px 0px 25px -13px #616161;
   box-shadow: 0px 0px 25px -13px #616161;
@@ -140,4 +140,27 @@ a.link-position {
 
 .user-recipe-view-wrapper {
   margin: 50px 0px;
+}
+
+.profile-toggle-wrapper,
+.no-items-yet {
+  width: 50%;
+  margin: auto;
+}
+
+.profile-toggle-wrapper {
+  margin-bottom: 20px;
+}
+
+.profile-toggle-wrapper p {
+  margin: 0px 5px;
+}
+
+.no-items-yet p {
+  margin: 2px 0px;
+  font-size: 1.2em;
+}
+
+.created-container {
+  min-height: 101vh;
 }

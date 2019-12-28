@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import IngredientService from "../../../../api/ingredientService";
 import UpdateService from "../../../../api/updateService";
+import RecipeService from "../../../../api/recipeService";
 import List from "./ingredientItems";
 import { Link } from "react-router-dom";
 import Trash from "../../../../components/icons/trash.png";
 
-function Values(props) {
+const Values = memo(props => {
   const [ingredients, setIngredients] = useState([]);
   const [show, setShow] = useState("hide");
   const ingredientService = new IngredientService();
   const updateService = new UpdateService();
-  const { recipe, type, deleteLikedList } = props;
+  const recipeService = new RecipeService();
+  const { recipe, type, deleteList } = props;
   const nutrients = props.recipe.nutrients;
   const [popMessage, setPopMessage] = useState("");
   const [likedAmount, setLikedAmount] = useState(recipe.likes.length);
 
   useEffect(() => {
-    debugger;
     const run = async () => {
       const { ingredients } = props.recipe;
       const ingredientsIds = ingredients.map(i => i.ingredientId);
@@ -43,14 +44,18 @@ function Values(props) {
     }
   };
 
-  const deleteHandler = async id => {
-    const deletedRecipe = await updateService.removeLikedRecipe(id);
-    console.log(deletedRecipe);
+  const deleteHandler = async (id, type) => {
+    let deletedRecipe = null;
+    if (type === "liked") {
+      deletedRecipe = await updateService.removeLikedRecipe(id);
+    } else if (type === "created") {
+      deletedRecipe = await recipeService.delete(id);
+    }
     if (deletedRecipe) {
-      deleteLikedList(id);
-      setPopMessage("Recipe deleted from collection!");
+      setPopMessage(`Recipe deleted from ${type} collection!`);
       setShow("show");
       setTimeout(() => setShow("hide"), 2500);
+      deleteList(id, type);
     }
   };
 
@@ -119,18 +124,28 @@ function Values(props) {
           )}
           {type === "delete" && (
             <img
-              onClick={() => deleteHandler(recipe._id)}
+              onClick={() => deleteHandler(recipe._id, "liked")}
               className="copy-recipe img-action cursor"
               src={Trash}
             />
           )}
           {!type && (
-            <Link className="link-position" to={`/recipe/update/${recipe._id}`}>
+            <>
+              <Link
+                className="link-position"
+                to={`/recipe/update/${recipe._id}`}
+              >
+                <img
+                  className="edit"
+                  src="https://image.flaticon.com/icons/svg/61/61456.svg"
+                />
+              </Link>
               <img
-                className="edit"
-                src="https://image.flaticon.com/icons/svg/61/61456.svg"
+                onClick={() => deleteHandler(recipe._id, "created")}
+                className="copy-recipe img-action cursor"
+                src={Trash}
               />
-            </Link>
+            </>
           )}
           <div className="heart">
             <p className="white">{likedAmount}</p>
@@ -141,6 +156,6 @@ function Values(props) {
       )}
     </>
   );
-}
+});
 
 export default Values;

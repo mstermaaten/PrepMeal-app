@@ -36,7 +36,6 @@ router.post("/create", async (req, res, next) => {
         console.log(err);
       }
     });
-    debugger;
     const newId = newRecipe.id;
     const updateUser = await User.update(
       { _id: userID },
@@ -80,8 +79,18 @@ router.get("/find/:id", async (req, res, next) => {
 });
 
 router.put("/update/:id", async (req, res, next) => {
+  debugger;
   const { id } = req.params;
-  const { name, ingredients } = req.body;
+  const {
+    name,
+    category,
+    description,
+    diet,
+    imageFile,
+    time,
+    ingredientValues,
+    storedList
+  } = req.body;
   const { _id: userId } = req.session.user;
 
   try {
@@ -90,9 +99,14 @@ router.put("/update/:id", async (req, res, next) => {
       {
         $set: {
           name,
-          createdBy: userId,
-          likes: [],
-          ingredients: { $set: { ingredients } }
+          category,
+          description,
+          diet,
+          img: imageFile,
+          createdBy: userID,
+          time,
+          nutrients: ingredientValues,
+          ingredients: [...storedList]
         }
       }
     );
@@ -109,14 +123,12 @@ router.get("/likes", async (req, res, next) => {
     res.status(404).json({ message: "please log in" });
     return;
   } else {
-    debugger;
     const user = await User.findById(userId);
     likedID = user.likedRecipes.map(i => i._id);
   }
 
   try {
-    debugger;
-    const allLikedRecipes = await Recipe.find({_id: likedID});
+    const allLikedRecipes = await Recipe.find({ _id: likedID });
     res.status(200).json(allLikedRecipes);
   } catch (err) {
     res
@@ -142,7 +154,7 @@ router.delete("/delete/:id", async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const deletedIngredient = await Recipe.findByIdAndDelete({ id });
+    const deletedIngredient = await Recipe.findByIdAndDelete(id);
     res.status(200).json({ message: "ingredient deleted" });
   } catch (err) {
     res.status(500).json({ message: "oeps something went wrong" + err });

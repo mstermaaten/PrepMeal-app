@@ -6,7 +6,6 @@ import AuthService from "../../api/authService";
 import "./styles.css";
 
 function Explore(props) {
-  const { user } = props;
   const [users, setUsers] = useState([]);
   const userService = new UserService();
 

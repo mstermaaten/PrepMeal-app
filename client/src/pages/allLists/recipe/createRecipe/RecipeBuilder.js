@@ -1,6 +1,6 @@
 import React from "react";
 
-function RecipeBuilder(props) {
+function RecipeSelector(props) {
   const { removeHandler, items } = props;
 
   return (
@@ -75,4 +75,4 @@ function RecipeBuilder(props) {
   );
 }
 
-export default RecipeBuilder;
+export default RecipeSelector;

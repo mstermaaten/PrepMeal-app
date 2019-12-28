@@ -44,7 +44,7 @@ export default class IngredientService {
 
   getAllIng = async ids => {
     try {
-      const { data: oneIngredients } = await this.service.post("/ingredient", {
+      const { data: oneIngredients } = await this.service.post("/ingredient/selected", {
         ids
       });
       return oneIngredients;

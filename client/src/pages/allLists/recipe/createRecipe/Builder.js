@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import IngredientList from "./ingredientList";
-import RecipeBuilder from "./RecipeBuilder";
+import RecipeSelector from "./RecipeBuilder";
 import Portion from "./setPortion";
 import Values from "./Values";
 import Inputs from "./additionalValues";
@@ -11,18 +11,18 @@ import IngredientService from "../../../../api/ingredientService";
 import CreateIngredient from "../../ingredient/createIngredient";
 import "./styles.css";
 
-function RecipePage(props) {
+function RecipeBuilder(props) {
   const editID = props.match.params.id;
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
   const [description, setDescription] = useState(null);
   const [ingredientValues, setValuesIngredient] = useState({});
   const [imageFile, setImageFile] = useState(
-    "https://eatforum.org/content/uploads/2018/05/table_with_food_top_view_900x700.jpg"
+    "https://resources.healthydirections.com/resources/web/articles/hd/hd-what-is-the-best-heart-healthy-diet-plan-hd-cover.jpg"
   );
   const [imageText, setImageText] = useState("Add a photo to your recipe");
   const [diet, setDiet] = useState(null);
-  const [time, setTime] = useState("-");
+  const [time, setTime] = useState("");
   const [currentItem, setCurrentItem] = useState(null);
   const [items, setItems] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -145,21 +145,42 @@ function RecipePage(props) {
       return { ingredientId: i._id, portion: i.portion };
     });
 
-    try {
-      const createRecipe = await recipeService.create(
-        name,
-        category,
-        description,
-        diet,
-        imageFile,
-        time,
-        ingredientValues,
-        storedList
-      );
-      props.history.push("/recipe");
-      return createRecipe;
-    } catch (err) {
-      console.log(err);
+    if (editID) {
+      try {
+        debugger;
+        const createRecipe = await recipeService.update(
+          editID,
+          name,
+          category,
+          description,
+          diet,
+          imageFile,
+          time,
+          ingredientValues,
+          storedList
+        );
+        props.history.push("/recipe");
+        return createRecipe;
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        const createRecipe = await recipeService.create(
+          name,
+          category,
+          description,
+          diet,
+          imageFile,
+          time,
+          ingredientValues,
+          storedList
+        );
+        props.history.push("/recipe");
+        return createRecipe;
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -185,7 +206,7 @@ function RecipePage(props) {
           />
         </div>
         <div className="middle">
-          <RecipeBuilder items={items} removeHandler={removeHandler} />
+          <RecipeSelector items={items} removeHandler={removeHandler} />
           <Values
             items={items}
             ingredientValues={ingredientValues}
@@ -223,4 +244,4 @@ function RecipePage(props) {
   );
 }
 
-export default withRouter(RecipePage);
+export default withRouter(RecipeBuilder);

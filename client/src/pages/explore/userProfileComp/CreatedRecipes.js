@@ -22,22 +22,23 @@ const Recipes = memo(props => {
     getRecipes();
   }, []);
 
-  const onWheel = e => {
-    e.stopPropagation();
-    e.preventDefault();
-    var container = document.getElementById("category-header");
-    var containerScrollPosition = document.getElementById("category-header")
-      .scrollLeft;
-    container.scrollTo({
-      top: 0,
-      left: containerScrollPosition + e.deltaY,
-      behaviour: "smooth" //if you want smooth scrolling
-    });
-  };
+  // const onWheel = e => {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   var container = document.getElementById("category-header");
+  //   var containerScrollPosition = document.getElementById("category-header")
+  //     .scrollLeft;
+  //   container.scrollTo({
+  //     top: 0,
+  //     left: containerScrollPosition + e.deltaY,
+  //     behaviour: "smooth" //if you want smooth scrolling
+  //   });
+  // id="category-header" onWheel={onWheel}
+  // };
 
   const CreatedList = () => {
     return (
-      <div className="parent" id="category-header" onWheel={onWheel}>
+      <div className="profile-recipe-parent-wrapper">
         {createdRecipes.map((recipe, i) => {
           return <Values key={i} recipe={recipe} type={"explore"} />;
         })}

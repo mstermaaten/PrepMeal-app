@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/selected", async (req, res, next) => {
   try {
     const allIngredients = await Ingredient.find({
       _id: { $in: req.body.ids }
@@ -29,7 +29,7 @@ router.get("/find/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     debugger;
-    const oneIngredients = await Ingredient.findById(id);
+    const oneIngredients = await Ingredient.findOne({ _id: id });
     res.status(200).json(oneIngredients);
   } catch (err) {
     res.status(500).json({ message: "oeps something went wrong" + err });

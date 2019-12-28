@@ -40,7 +40,7 @@ function UserCard(props) {
       <div className="usercard-information">
         <Link
           to={`/explore/user/${user._id}`}
-          classname="link-style"
+          className="link-style"
           style={linkStyles}
         >
           <div
@@ -51,7 +51,7 @@ function UserCard(props) {
         <div className="user-info">
           <Link
             to={`/explore/user/${user._id}`}
-            classname="link-style"
+            className="link-style"
             style={linkStyles}
           >
             <p className="username full">{user.username}</p>
@@ -84,7 +84,7 @@ function UserCard(props) {
             </div>
             <Link
               to={`/explore/user/${user._id}`}
-              classname="link-style"
+              className="link-style"
               style={linkStyles}
             >
               <p className="follow-p">Recipes</p>

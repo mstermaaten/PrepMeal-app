@@ -8,7 +8,7 @@ import Ingredients from "./pages/allLists/ingredient/ingredients";
 import CreateIngredient from "./pages/allLists/ingredient/createIngredient";
 import UpdateIngredient from "./pages/allLists/ingredient/updateIngredient";
 import RecipesList from "./pages/allLists/recipe/recipesList";
-import RecipePage from "./pages/allLists/recipe/createRecipe/Builder";
+import RecipeBuilder from "./pages/allLists/recipe/createRecipe/Builder";
 import AuthService from "../src/api/authService";
 import Header from "./components/main/Header";
 import DayPlanPage from "./pages/allLists/dayplans/Builder";
@@ -16,6 +16,7 @@ import DaylanList from "./pages/allLists/dayplans/show/Dayplans";
 import Explore from "./pages/explore/Explore";
 import AllUsersPage from "./pages/explore/exploreComp/AllUsersPage";
 import UserProfile from "./pages/explore/UserProfile";
+import RecipePage from "./pages/recipePage/recipePage";
 import "./App.css";
 
 function App() {
@@ -25,7 +26,6 @@ function App() {
 
   useEffect(() => {
     const run = async () => {
-      debugger;
       const loggedUser = await authService.getCurrent();
       setUser(loggedUser);
       setUserLoading(false);
@@ -58,25 +58,26 @@ function App() {
             render={props => <Profile {...props} user={user} />}
           />
         )}
+        {!userLoading && (
+          <Route
+            path="/profile"
+            render={props => <RecipesList {...props} user={user} />}
+          />
+        )}
         <Route exact path="/ingredient" component={Ingredients} />
         <Route path="/ingredient/create" component={CreateIngredient} />
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
-        <Route exact path="/recipe" component={RecipesList} />
         <Route path="/recipe/create" component={RecipePage} />
-        <Route path="/recipe/update/:id" component={RecipePage} />
-
+        <Route path="/recipe/update/:id" component={RecipeBuilder} />
         <Route exact path="/dayplan" component={DaylanList} />
         <Route path="/dayplan/create" component={DayPlanPage} />
-        <Route
-          exact
-          path="/explore"
-          render={props => <Explore {...props} user={user} />}
-        />
+        <Route exact path="/explore" component={Explore} />
         <Route path="/explore/users" component={AllUsersPage} />
         <Route
           path="/explore/user/:id"
           render={props => <UserProfile {...props} user={user} />}
         />
+        <Route exact path="/recipe/see/:id" component={RecipePage} />
       </Switch>
     </>
   );
