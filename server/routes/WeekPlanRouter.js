@@ -5,6 +5,4 @@ const Recipe = require("../models/Recipe");
 const DayPlan = require("../models/DayPlan");
 const WeekPlan = require("../models/WeekPlan");
 
-
-
 module.exports = router;

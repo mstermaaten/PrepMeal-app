@@ -67,7 +67,7 @@ function App() {
         <Route exact path="/ingredient" component={Ingredients} />
         <Route path="/ingredient/create" component={CreateIngredient} />
         <Route path="/ingredient/update/:id" component={UpdateIngredient} />
-        <Route path="/recipe/create" component={RecipePage} />
+        <Route path="/recipe/create" component={RecipeBuilder} />
         <Route path="/recipe/update/:id" component={RecipeBuilder} />
         <Route exact path="/dayplan" component={DaylanList} />
         <Route path="/dayplan/create" component={DayPlanPage} />
